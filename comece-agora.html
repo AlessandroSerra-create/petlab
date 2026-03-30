@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comece Agora — PetLab</title>
+  <meta name="description" content="Inicie seu projeto pet em private label. Preencha o formulário e receba nossa resposta em até 24 horas. Consulta inicial gratuita." />
+  <meta property="og:title" content="Comece Agora — PetLab" />
+  <meta property="og:description" content="Conta pra gente o que você quer criar. A consulta inicial é gratuita." />
+  <meta property="og:image" content="og-image.jpg" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
+  <link rel="stylesheet" href="style-shared.css" />
+
+  <style>
+    /* =====================================================
+       FORM PAGE
+       ===================================================== */
+    #form-section {
+      min-height: 100vh;
+      padding: 160px 32px 120px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    /* Progress bar */
+    .form-progress-wrap {
+      margin-bottom: 40px;
+    }
+
+    .form-progress-steps {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .form-step-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .form-step-label.active-label {
+      color: var(--accent-dark);
+    }
+
+    .form-progress-track {
+      height: 3px;
+      background: rgba(13,43,31,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .form-progress-fill {
+      height: 100%;
+      background: var(--accent-dark);
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    /* Form header */
+    .form-header {
+      margin-bottom: 36px;
+    }
+
+    .form-header h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .form-header p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Form card */
+    .form-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(13,43,31,0.08);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 4px 32px rgba(13,43,31,0.06);
+    }
+
+    /* Step panels */
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    /* Field styles */
+    .field-group {
+      margin-bottom: 24px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      background: #FAFAFA;
+      border: 1px solid rgba(13,43,31,0.12);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px; /* min 16px — prevent iOS zoom */
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .field-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%237A9E8E' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 44px;
+      cursor: pointer;
+    }
+
+    .field-group select option {
+      background: #FFFFFF;
+      color: var(--text-primary);
+    }
+
+    .field-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      border-color: var(--accent-dark);
+      box-shadow: 0 0 0 3px rgba(13,43,31,0.06);
+      background: #FFFFFF;
+    }
+
+    .field-group input::placeholder,
+    .field-group textarea::placeholder {
+      color: rgba(122,158,142,0.5);
+    }
+
+    .field-group .optional {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      margin-left: 6px;
+      text-transform: lowercase;
+      letter-spacing: 0;
+    }
+
+    /* Radio group */
+    .radio-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .radio-option {
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .radio-option input[type="radio"] {
+      display: none;
+    }
+
+    .radio-option label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border: 1px solid rgba(13,43,31,0.12);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      text-align: center;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-bottom: 0;
+      background: #FAFAFA;
+    }
+
+    .radio-option input[type="radio"]:checked + label {
+      border-color: var(--accent-dark);
+      background: rgba(13,43,31,0.05);
+      color: var(--text-primary);
+      box-shadow: 0 0 0 2px rgba(13,43,31,0.08);
+    }
+
+    .radio-option label:hover {
+      border-color: rgba(82,201,138,0.5);
+      color: var(--text-primary);
+      background: #FFFFFF;
+    }
+
+    /* Error messages */
+    .field-error {
+      display: none;
+      font-size: 0.78rem;
+      color: #ff6b6b;
+      margin-top: 6px;
+    }
+
+    .field-group.has-error input,
+    .field-group.has-error select,
+    .field-group.has-error textarea {
+      border-color: #ff6b6b;
+    }
+
+    .field-group.has-error .field-error {
+      display: block;
+    }
+
+    /* Step actions */
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(13,43,31,0.08);
+    }
+
+    .form-actions .btn-primary {
+      min-width: 160px;
+    }
+
+    /* Sticky CTA mobile */
+    #sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+      background: rgba(255,255,255,0.95);
+      border-top: 1px solid rgba(13,43,31,0.1);
+      backdrop-filter: blur(12px);
+      z-index: 500;
+    }
+
+    #sticky-cta .btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      #form-section {
+        padding: 120px 20px 100px;
+      }
+
+      .form-card {
+        padding: 28px 24px;
+      }
+
+      #sticky-cta {
+        display: block;
+      }
+
+      .form-actions .btn-ghost {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .radio-group { flex-direction: column; }
+      .radio-option { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="starscape"></canvas>
+  <div id="scrollProgress"></div>
+
+  <nav id="navbar" role="navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="PetLab logo" />
+        PetLab
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="comece-agora.html" class="nav-cta" style="background:rgba(82,201,138,0.2);">Iniciar Projeto →</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-mobile-panel" id="navMobilePanel">
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="como-funciona.html">Como Funciona</a>
+    <a href="para-marcas.html">Para Marcas</a>
+    <a href="fabricantes.html">Fabricantes</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+  </div>
+
+  <section id="form-section">
+    <div class="orb orb-accent" style="width:500px;height:500px;top:-200px;right:-150px;"></div>
+    <div class="orb orb-accent" style="width:300px;height:300px;bottom:-100px;left:-100px;opacity:0.07;"></div>
+
+    <div class="form-wrapper">
+      <!-- Hero copy -->
+      <div class="form-header">
+        <div class="badge-tag">Consulta Gratuita</div>
+        <h2>Conta pra gente<br />o que você quer criar.</h2>
+        <p>A consulta inicial é gratuita. Respondemos em até 24 horas.</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="form-progress-wrap">
+        <div class="form-progress-steps">
+          <span class="form-step-label active-label" id="label-1">Sobre você</span>
+          <span class="form-step-label" id="label-2">Sobre o projeto</span>
+          <span class="form-step-label" id="label-3">Última pergunta</span>
+        </div>
+        <div class="form-progress-track">
+          <div class="form-progress-fill" id="progressFill" style="width:33%"></div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card">
+        <form id="petlabForm" novalidate>
+
+          <!-- STEP 1 -->
+          <div class="form-step active" id="step-1">
+            <div class="field-group" id="fg-nome">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" autocomplete="name" />
+              <span class="field-error">Por favor, informe seu nome completo.</span>
+            </div>
+            <div class="field-group" id="fg-email">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" autocomplete="email" />
+              <span class="field-error">Por favor, informe um e-mail válido.</span>
+            </div>
+            <div class="field-group" id="fg-whatsapp">
+              <label for="whatsapp">WhatsApp com DDD</label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" autocomplete="tel" />
+              <span class="field-error">Por favor, informe seu WhatsApp com DDD.</span>
+            </div>
+            <div class="field-group">
+              <label for="empresa">Empresa / Marca <span class="optional">(opcional)</span></label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa ou marca" autocomplete="organization" />
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-primary" id="btn-step1">Continuar →</button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="form-step" id="step-2">
+            <div class="field-group" id="fg-categoria">
+              <label for="categoria">Categoria do produto</label>
+              <select id="categoria" name="categoria">
+                <option value="" disabled selected>Selecione uma categoria</option>
+                <option value="suplementos">Suplementos</option>
+                <option value="alimentacao">Alimentação</option>
+                <option value="higiene">Higiene</option>
+                <option value="acessorios">Acessórios</option>
+                <option value="outro">Outro</option>
+              </select>
+              <span class="field-error">Por favor, selecione uma categoria.</span>
+            </div>
+            <div class="field-group" id="fg-descricao">
+              <label for="descricao">Descreva o produto que você quer criar</label>
+              <textarea id="descricao" name="descricao" placeholder="Ex: um suplemento articular para cães de médio porte, com ômega 3..."></textarea>
+              <span class="field-error">Por favor, descreva o produto que você quer criar.</span>
+            </div>
+            <div class="field-group" id="fg-volume">
+              <label for="volume">Volume inicial estimado</label>
+              <select id="volume" name="volume">
+                <option value="" disabled selected>Selecione um volume</option>
+                <option value="menos500">Menos de 500 unidades</option>
+                <option value="500-2000">500 – 2.000 unidades</option>
+                <option value="mais2000">Mais de 2.000 unidades</option>
+                <option value="naosei">Não sei ainda</option>
+              </select>
+              <span class="field-error">Por favor, selecione um volume estimado.</span>
+            </div>
+            <div class="field-group">
+              <label>Tem embalagem ou identidade visual?</label>
+              <div class="radio-group" id="fg-embalagem">
+                <div class="radio-option">
+                  <input type="radio" id="emb-sim" name="embalagem" value="sim" />
+                  <label for="emb-sim">Sim</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="emb-nao" name="embalagem" value="nao" />
+                  <label for="emb-nao">Não</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="emb-dev" name="embalagem" value="em-desenvolvimento" />
+                  <label for="emb-dev">Em desenvolvimento</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-ghost" id="btn-back1">← Voltar</button>
+              <button type="button" class="btn-primary" id="btn-step2">Continuar →</button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="form-step" id="step-3">
+            <div class="field-group" id="fg-origem">
+              <label for="origem">Como nos encontrou?</label>
+              <select id="origem" name="origem">
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="instagram">Instagram</option>
+                <option value="indicacao">Indicação</option>
+                <option value="google">Google</option>
+                <option value="feira">Feira</option>
+                <option value="outro">Outro</option>
+              </select>
+              <span class="field-error">Por favor, selecione como nos encontrou.</span>
+            </div>
+            <div class="field-group">
+              <label for="comentario">Alguma dúvida ou comentário? <span class="optional">(opcional)</span></label>
+              <textarea id="comentario" name="comentario" placeholder="Fique à vontade para contar mais sobre o seu projeto..." style="min-height:120px;"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-ghost" id="btn-back2">← Voltar</button>
+              <button type="submit" class="btn-primary" id="btn-submit">Enviar Projeto →</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky CTA mobile (disappears when form is visible) -->
+  <div id="sticky-cta">
+    <a href="#form-section" class="btn-primary">Iniciar Meu Projeto →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="logo.png" alt="PetLab" loading="lazy" />PetLab</div>
+      <nav class="footer-links">
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <a href="comece-agora.html">Comece Agora</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+      <div class="lang-switcher" style="justify-content:center; margin-bottom:24px;">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <p class="footer-copy">© 2026 PetLab. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <div id="chat-placeholder">💬 Falar com PetLab</div>
+  <!-- ELEVENLABS_WIDGET -->
+
+  <script>
+    /* Starscape */
+    (function(){const canvas=document.getElementById('starscape'),ctx=canvas.getContext('2d');let stars=[];function createStars(){stars=[];for(let i=0;i<180;i++)stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,radius:0.3+Math.random()*1.2,baseOpacity:0.2+Math.random()*0.6,driftX:(Math.random()-0.5)*0.04,driftY:(Math.random()-0.5)*0.02,twinkleSpeed:0.0005+Math.random()*0.002,twinklePhase:Math.random()*Math.PI*2});}function resize(){const dpr=window.devicePixelRatio||1;canvas.width=window.innerWidth*dpr;canvas.height=window.innerHeight*dpr;canvas.style.width=window.innerWidth+'px';canvas.style.height=window.innerHeight+'px';createStars();}function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);const now=Date.now();stars.forEach(s=>{s.x+=s.driftX;s.y+=s.driftY;if(s.x<0)s.x=canvas.width;if(s.x>canvas.width)s.x=0;if(s.y<0)s.y=canvas.height;if(s.y>canvas.height)s.y=0;const t=Math.sin(now*s.twinkleSpeed+s.twinklePhase);const op=s.baseOpacity+t*0.3;ctx.beginPath();ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${Math.max(0,op)})`;ctx.fill();});requestAnimationFrame(animate);}resize();animate();window.addEventListener('resize',resize);})();
+
+    const sp=document.getElementById('scrollProgress');
+    window.addEventListener('scroll',()=>{sp.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';},{passive:true});
+    const navbar=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>{navbar.classList.toggle('nav-scrolled',window.scrollY>80);},{passive:true});
+    const hamburger=document.getElementById('navHamburger'),panel=document.getElementById('navMobilePanel'),overlay=document.getElementById('navOverlay');
+    hamburger.addEventListener('click',()=>{const open=panel.classList.toggle('open');overlay.classList.toggle('open',open);hamburger.setAttribute('aria-expanded',open);});
+    overlay.addEventListener('click',()=>{panel.classList.remove('open');overlay.classList.remove('open');hamburger.setAttribute('aria-expanded',false);});
+
+    /* Multi-step form */
+    let currentStep = 1;
+    const totalSteps = 3;
+    const progressFill = document.getElementById('progressFill');
+    const labels = [document.getElementById('label-1'), document.getElementById('label-2'), document.getElementById('label-3')];
+
+    function setStep(n) {
+      document.getElementById('step-'+currentStep).classList.remove('active');
+      currentStep = n;
+      document.getElementById('step-'+currentStep).classList.add('active');
+      progressFill.style.width = (currentStep / totalSteps * 100) + '%';
+      labels.forEach((l, i) => l.classList.toggle('active-label', i+1 === currentStep));
+      window.scrollTo({top: document.getElementById('form-section').offsetTop - 80, behavior: 'smooth'});
+    }
+
+    /* Validation helpers */
+    function setError(id, show) {
+      const fg = document.getElementById('fg-'+id);
+      if (fg) fg.classList.toggle('has-error', show);
+    }
+
+    function validateStep1() {
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const whatsapp = document.getElementById('whatsapp').value.trim();
+      const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let valid = true;
+      setError('nome', !nome); if(!nome) valid=false;
+      setError('email', !emailRx.test(email)); if(!emailRx.test(email)) valid=false;
+      setError('whatsapp', whatsapp.length < 10); if(whatsapp.length<10) valid=false;
+      return valid;
+    }
+
+    function validateStep2() {
+      const cat = document.getElementById('categoria').value;
+      const desc = document.getElementById('descricao').value.trim();
+      const vol = document.getElementById('volume').value;
+      let valid = true;
+      setError('categoria', !cat); if(!cat) valid=false;
+      setError('descricao', desc.length < 10); if(desc.length<10) valid=false;
+      setError('volume', !vol); if(!vol) valid=false;
+      return valid;
+    }
+
+    function validateStep3() {
+      const origem = document.getElementById('origem').value;
+      let valid = true;
+      setError('origem', !origem); if(!origem) valid=false;
+      return valid;
+    }
+
+    document.getElementById('btn-step1').addEventListener('click', () => {
+      if (validateStep1()) setStep(2);
+    });
+
+    document.getElementById('btn-step2').addEventListener('click', () => {
+      if (validateStep2()) setStep(3);
+    });
+
+    document.getElementById('btn-back1').addEventListener('click', () => setStep(1));
+    document.getElementById('btn-back2').addEventListener('click', () => setStep(2));
+
+    document.getElementById('petlabForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (validateStep3()) {
+        window.location.href = 'obrigado.html';
+      }
+    });
+
+    /* Sticky CTA: hide when form card is visible */
+    const formCard = document.querySelector('.form-card');
+    const stickyCta = document.getElementById('sticky-cta');
+    const stickyObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { stickyCta.style.display = e.isIntersecting ? 'none' : 'block'; });
+    }, { threshold: 0.1 });
+    stickyObs.observe(formCard);
+
+    /* WhatsApp mask */
+    document.getElementById('whatsapp').addEventListener('input', function() {
+      let v = this.value.replace(/\D/g,'');
+      if(v.length>11) v=v.slice(0,11);
+      if(v.length>7) v=v.replace(/(\d{2})(\d{5})(\d+)/,'($1) $2-$3');
+      else if(v.length>2) v=v.replace(/(\d{2})(\d+)/,'($1) $2');
+      this.value = v;
+    });
+
+    /* Language switcher */
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('.lang-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

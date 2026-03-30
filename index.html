@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PetLab — Da ideia à fórmula.</title>
+  <meta name="description" content="PetLab é a agência B2B de desenvolvimento de produto pet em private label. Da ideia à amostra aprovada em até 60 dias. Brasil e América Latina." />
+  <meta property="og:title" content="PetLab — Da ideia à fórmula." />
+  <meta property="og:description" content="Encontramos o fabricante certo, gerenciamos a formulação e entregamos sua amostra — em até 60 dias." />
+  <meta property="og:image" content="og-image.jpg" />
+  <meta name="robots" content="index, follow" />
+  <link rel="alternate" hreflang="pt-br" href="/" />
+  <link rel="alternate" hreflang="es" href="/es/" />
+  <link rel="alternate" hreflang="en" href="/en/" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PetLab",
+    "description": "Agência B2B de desenvolvimento de produto pet em private label",
+    "url": "https://petlab.com"
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM — LIGHT MODE
+       ============================================================ */
+    :root {
+      --bg-primary:    #FFFFFF;
+      --bg-secondary:  #F4F8F6;
+      --accent:        #0D2B1F;
+      --accent-mid:    #1E5C3A;
+      --accent-bright: #52C98A;
+      --text-primary:  #0D2B1F;
+      --text-muted:    #4A7A62;
+      --border:        rgba(13, 43, 31, 0.1);
+      --card-bg:       rgba(13, 43, 31, 0.03);
+      --card-border:   rgba(13, 43, 31, 0.08);
+      --radius-card:   20px;
+      --radius-btn:    12px;
+      --transition:    0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: auto; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FFFFFF;
+      color: #0D2B1F;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Sora', sans-serif;
+      line-height: 1.2;
+      color: #0D2B1F;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    ::selection { background: #52C98A; color: #0D2B1F; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F4F8F6; }
+    ::-webkit-scrollbar-thumb { background: #0D2B1F; border-radius: 3px; }
+
+    /* ============================================================
+       SCROLL PROGRESS BAR
+       ============================================================ */
+    #scrollProgress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #52C98A, #0D2B1F);
+      z-index: 10000;
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       LOADER
+       ============================================================ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      animation: loaderAutoDismiss 0.7s ease 3s forwards;
+    }
+
+    @keyframes loaderAutoDismiss {
+      to { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
+
+    .loader-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #0D2B1F;
+    }
+
+    .loader-logo img { width: 48px; height: 48px; object-fit: contain; border-radius: 10px; }
+
+    .loader-text {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+    }
+
+    .loader-bar-track {
+      width: 220px;
+      height: 2px;
+      background: rgba(13,43,31,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: #52C98A;
+      border-radius: 2px;
+      transition: width 0.2s ease;
+    }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #navbar.nav-scrolled {
+      background: transparent;
+      border-bottom: none;
+    }
+
+    .nav-inner {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #navbar.nav-scrolled .nav-inner {
+      max-width: 900px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(13,43,31,0.1);
+      border-radius: 100px;
+      padding: 10px 24px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 24px rgba(13,43,31,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #0D2B1F;
+    }
+
+    .nav-logo img { width: 30px; height: 30px; object-fit: contain; border-radius: 6px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: #0D2B1F; }
+
+    .nav-cta {
+      background: #0D2B1F !important;
+      color: #FFFFFF !important;
+      padding: 8px 20px !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+      font-size: 0.85rem !important;
+      transition: all var(--transition) !important;
+    }
+
+    .nav-cta:hover {
+      background: #1E5C3A !important;
+      transform: translateY(-1px);
+    }
+
+    /* Lang switcher */
+    .lang-switcher { display: flex; align-items: center; gap: 4px; }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: color 0.2s ease;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .lang-btn:hover { color: #0D2B1F; }
+    .lang-btn.active { color: #52C98A; }
+
+    .lang-divider { color: var(--border); font-size: 0.7rem; user-select: none; }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #0D2B1F;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile panel */
+    .nav-mobile-panel {
+      display: none;
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(320px, 85vw);
+      background: #FFFFFF;
+      border-left: 1px solid var(--border);
+      z-index: 9998;
+      padding: 80px 32px 40px;
+      flex-direction: column;
+      gap: 20px;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-mobile-panel.open { transform: translateX(0); }
+
+    .nav-mobile-panel a {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #0D2B1F;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(13,43,31,0.06);
+      transition: color var(--transition);
+    }
+
+    .nav-mobile-panel a:hover { color: #52C98A; }
+    .nav-mobile-panel .nav-cta { border-radius: var(--radius-btn) !important; text-align: center; border-bottom: none !important; margin-top: 8px; }
+
+    .mobile-lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(13,43,31,0.06);
+    }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      z-index: 9997;
+    }
+
+    .nav-overlay.open { display: block; }
+
+    /* ============================================================
+       HERO — ANIMATION SECTION (sticky scroll) + TEXT SECTION
+       ============================================================ */
+    .animation-scroll-space {
+      height: 350vh;
+      position: relative;
+    }
+
+    #hero-animation {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    #frameCanvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      z-index: 2;
+      white-space: nowrap;
+      animation: bounceHint 2s ease-in-out infinite;
+    }
+
+    @keyframes bounceHint {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+      50%       { transform: translateX(-50%) translateY(6px); opacity: 1; }
+    }
+
+    #hero-text {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 32px 100px;
+      background: #FFFFFF;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #52C98A;
+      border: 1px solid rgba(82, 201, 138, 0.35);
+      background: rgba(82, 201, 138, 0.07);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    #hero-text h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      color: #0D2B1F;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    #hero-text p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn-primary {
+      background: #0D2B1F;
+      color: #FFFFFF;
+      padding: 16px 36px;
+      border-radius: var(--radius-btn);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      border: 2px solid #0D2B1F;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #1E5C3A;
+      border-color: #1E5C3A;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #0D2B1F;
+      padding: 16px 36px;
+      border-radius: var(--radius-btn);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      border: 2px solid rgba(13,43,31,0.2);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      border-color: #0D2B1F;
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       SECTION BASE
+       ============================================================ */
+    .section-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      color: #0D2B1F;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 56px;
+      line-height: 1.7;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #52C98A;
+      background: rgba(82,201,138,0.08);
+      border: 1px solid rgba(82,201,138,0.25);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    /* Fade-up */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       SPECS — sezione bianca
+       ============================================================ */
+    #specs {
+      background: #FFFFFF;
+      padding: 100px 32px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .spec-item {
+      padding: 40px 20px;
+      border-right: 1px solid var(--border);
+    }
+
+    .spec-item:last-child { border-right: none; }
+
+    .spec-value-row {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .spec-number {
+      font-family: 'Sora', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #0D2B1F;
+      line-height: 1;
+    }
+
+    .spec-suffix {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #52C98A;
+    }
+
+    .spec-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .spec-item {
+        border-right: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .spec-item:nth-child(2n) { border-right: none; }
+      .spec-item:nth-child(3),
+      .spec-item:nth-child(4) { border-bottom: none; }
+      .spec-number { font-size: 2.6rem; }
+    }
+
+    /* ============================================================
+       POSICIONAMENTO — bg secondario
+       ============================================================ */
+    #posicionamento {
+      background: #F4F8F6;
+      padding: 100px 32px;
+    }
+
+    .posicionamento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .posicionamento-card {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      padding: 36px 28px;
+      transition: all var(--transition);
+    }
+
+    .posicionamento-card:hover {
+      border-color: rgba(82,201,138,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(13,43,31,0.06);
+    }
+
+    .posicionamento-card .icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(82,201,138,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .posicionamento-card .icon-wrap i { font-size: 1.4rem; color: #52C98A; }
+
+    .posicionamento-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #0D2B1F;
+    }
+
+    .posicionamento-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+
+    @media (max-width: 768px) { .posicionamento-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       FEATURES — bg bianco
+       ============================================================ */
+    #features {
+      background: #FFFFFF;
+      padding: 100px 32px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .persona-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      padding: 36px 28px;
+      transition: all var(--transition);
+    }
+
+    .persona-card:hover {
+      border-color: rgba(82,201,138,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(13,43,31,0.06);
+    }
+
+    .persona-icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(82,201,138,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .persona-icon-wrap i { font-size: 1.4rem; color: #52C98A; }
+    .persona-card h3 { font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: #0D2B1F; }
+    .persona-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+
+    @media (max-width: 768px) { .features-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       SOCIAL PROOF — bg secondario
+       ============================================================ */
+    #social-proof {
+      background: #F4F8F6;
+      padding: 100px 32px;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .proof-card {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      padding: 48px 28px;
+      text-align: center;
+    }
+
+    .proof-card .big-number {
+      font-family: 'Sora', sans-serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: #0D2B1F;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .proof-card .proof-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 768px) { .proof-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       CTA FINAL — bg secondario con accent strip
+       ============================================================ */
+    #cta-final {
+      background: #FFFFFF;
+      padding: 120px 32px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    #cta-final h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #0D2B1F;
+    }
+
+    #cta-final p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 460px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+    .cta-whatsapp {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cta-whatsapp:hover { color: #52C98A; }
+
+    /* ============================================================
+       FOOTER — DARK (único sfondo scuro)
+       ============================================================ */
+    footer {
+      background: #0D2B1F;
+      padding: 64px 32px 40px;
+      text-align: center;
+    }
+
+    .footer-inner { max-width: 900px; margin: 0 auto; }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 32px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #FFFFFF;
+    }
+
+    .footer-brand img { width: 30px; height: 30px; object-fit: contain; border-radius: 6px; }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin-bottom: 28px;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: #52C98A; }
+
+    .footer-lang-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .footer-lang-wrap .lang-btn { color: rgba(255,255,255,0.4); }
+    .footer-lang-wrap .lang-btn:hover { color: rgba(255,255,255,0.8); }
+    .footer-lang-wrap .lang-btn.active { color: #52C98A; }
+    .footer-lang-wrap .lang-divider { color: rgba(255,255,255,0.15); }
+
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+    /* ============================================================
+       CHAT PLACEHOLDER
+       ============================================================ */
+    #chat-placeholder {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      z-index: 9000;
+      background: #0D2B1F;
+      color: #FFFFFF;
+      padding: 14px 20px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(13,43,31,0.2);
+      transition: all var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+
+    #chat-placeholder:hover {
+      background: #1E5C3A;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(13,43,31,0.25);
+    }
+
+    /* ============================================================
+       RESPONSIVE GLOBAL
+       ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile-panel { display: flex; }
+      .section-container { padding: 0 20px; }
+      #hero-text { padding: 80px 24px 60px; }
+      footer { padding: 48px 20px 32px; }
+    }
+
+    @media (max-width: 480px) {
+      .animation-scroll-space { height: 250vh; }
+      .btn-primary, .btn-secondary { padding: 14px 26px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-logo">
+      <img src="logo.png" alt="PetLab" loading="eager" />
+      PetLab
+    </div>
+    <p class="loader-text">Carregando...</p>
+    <div class="loader-bar-track">
+      <div class="loader-bar-fill" id="loaderBar"></div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar" role="navigation" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="PetLab logo" />
+        PetLab
+      </a>
+      <div class="nav-links">
+        <a href="index.html" style="color:var(--text-primary)">Home</a>
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-mobile-panel" id="navMobilePanel" role="dialog">
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="como-funciona.html">Como Funciona</a>
+    <a href="para-marcas.html">Para Marcas</a>
+    <a href="fabricantes.html">Fabricantes</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+  </div>
+
+  <!-- ============================================================
+       ANIMAÇÃO — scroll space + sticky canvas
+       ============================================================ -->
+  <div class="animation-scroll-space">
+    <section id="hero-animation">
+      <canvas id="frameCanvas"></canvas>
+      <div class="scroll-hint">Role para explorar ↓</div>
+    </section>
+  </div>
+
+  <!-- ============================================================
+       HERO TEXT — aparece após a animação
+       ============================================================ -->
+  <section id="hero-text">
+    <div class="hero-badge">Agência B2B Pet · Private Label</div>
+    <h1>A sua ideia de produto pet,<br>pronta para o mercado.</h1>
+    <p>Encontramos o fabricante certo, gerenciamos a formulação
+    e entregamos sua amostra — em até 60 dias.
+    Só ganhamos quando você produz.</p>
+    <div class="hero-buttons">
+      <a href="comece-agora.html" class="btn-primary">Iniciar Meu Projeto →</a>
+      <a href="como-funciona.html" class="btn-secondary">Ver Como Funciona</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SPECS
+       ============================================================ -->
+  <section id="specs">
+    <div class="section-container">
+      <div class="specs-grid">
+        <div class="spec-item" data-target="60">
+          <div class="spec-value-row">
+            <span class="spec-number">0</span>
+            <span class="spec-suffix">dias</span>
+          </div>
+          <span class="spec-label">Da ideia à amostra</span>
+        </div>
+        <div class="spec-item" data-target="100">
+          <div class="spec-value-row">
+            <span class="spec-number">0</span>
+            <span class="spec-suffix">%</span>
+          </div>
+          <span class="spec-label">Alinhamento de interesses</span>
+        </div>
+        <div class="spec-item" data-target="0">
+          <div class="spec-value-row">
+            <span class="spec-number">0</span>
+            <span class="spec-suffix">R$</span>
+          </div>
+          <span class="spec-label">Custo inicial para a marca</span>
+        </div>
+        <div class="spec-item" data-target="7">
+          <div class="spec-value-row">
+            <span class="spec-number">0</span>
+            <span class="spec-suffix"></span>
+          </div>
+          <span class="spec-label">Etapas do processo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       POSICIONAMENTO
+       ============================================================ -->
+  <section id="posicionamento">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;">Diferencial</p>
+      <h2 class="section-title">Não somos marketplace.<br>Não somos fabricante.</h2>
+      <p class="section-subtitle">Somos o seu time de desenvolvimento de produto terceirizado.</p>
+      <div class="posicionamento-grid">
+        <div class="posicionamento-card fade-up">
+          <div class="icon-wrap"><i class="ph-light ph-x-circle"></i></div>
+          <h3>NÃO somos marketplace</h3>
+          <p>Não te damos uma lista de fabricantes para contatar sozinho. Estamos do seu lado em cada etapa.</p>
+        </div>
+        <div class="posicionamento-card fade-up" style="transition-delay:0.12s">
+          <div class="icon-wrap"><i class="ph-light ph-handshake"></i></div>
+          <h3>Trabalhamos a comissão</h3>
+          <p>Só ganhamos quando você produz. Nossos interesses estão 100% alinhados com o seu negócio.</p>
+        </div>
+        <div class="posicionamento-card fade-up" style="transition-delay:0.24s">
+          <div class="icon-wrap"><i class="ph-light ph-check-circle"></i></div>
+          <h3>Um único interlocutor</h3>
+          <p>Da busca do fabricante à amostra aprovada, você fala com uma pessoa. Um processo. Zero caos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURES — Para quem é
+       ============================================================ -->
+  <section id="features">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;">Público</p>
+      <h2 class="section-title">Para quem é o PetLab</h2>
+      <p class="section-subtitle">Empreendedores, gestores de marca e distribuidores que querem criar produtos próprios.</p>
+      <div class="features-grid">
+        <div class="persona-card fade-up">
+          <div class="persona-icon-wrap"><i class="ph-light ph-rocket-launch"></i></div>
+          <div class="badge-tag">Empreendedor</div>
+          <h3>Você quer lançar uma marca pet</h3>
+          <p>Tem a visão, mas não sabe por onde começar. A gente guia cada passo — da ideia ao produto nas prateleiras.</p>
+        </div>
+        <div class="persona-card fade-up" style="transition-delay:0.12s">
+          <div class="persona-icon-wrap"><i class="ph-light ph-buildings"></i></div>
+          <div class="badge-tag">Gestor de Marca</div>
+          <h3>Você quer expandir a linha</h3>
+          <p>Processos internos lentos te travam. Precisa de um parceiro ágil, com documentação completa e zero surpresas.</p>
+        </div>
+        <div class="persona-card fade-up" style="transition-delay:0.24s">
+          <div class="persona-icon-wrap"><i class="ph-light ph-factory"></i></div>
+          <div class="badge-tag">Fabricante</div>
+          <h3>Você quer clientes B2B estruturados</h3>
+          <p>Tem capacidade produtiva mas o esforço comercial é caro e lento. Receba projetos com brief técnico pronto, NDA assinado e contratos de longo prazo.</p>
+          <a href="fabricantes.html" style="display:inline-block; margin-top:12px; font-size:0.85rem; color:#52C98A; font-weight:600;">Conhecer a rede →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOCIAL PROOF
+       ============================================================ -->
+  <section id="social-proof">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;">Resultados</p>
+      <h2 class="section-title">Em breve: cases reais</h2>
+      <p class="section-subtitle">Estamos documentando os primeiros projetos. Volte em breve.</p>
+      <div class="proof-grid">
+        <div class="proof-card fade-up">
+          <span class="big-number">60</span>
+          <span class="proof-label">dias por projeto</span>
+        </div>
+        <div class="proof-card fade-up" style="transition-delay:0.12s">
+          <span class="big-number">100%</span>
+          <span class="proof-label">comissão sobre resultado</span>
+        </div>
+        <div class="proof-card fade-up" style="transition-delay:0.24s">
+          <span class="big-number">01</span>
+          <span class="proof-label">interlocutor único</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA FINAL
+       ============================================================ -->
+  <section id="cta-final">
+    <h2>Pronto para criar o seu produto?</h2>
+    <p>Conta pra gente o que você quer desenvolver. A consulta inicial é gratuita.</p>
+    <div class="cta-buttons">
+      <a href="comece-agora.html" class="btn-primary">Iniciar Meu Projeto →</a>
+      <a href="#" class="cta-whatsapp">
+        <i class="ph-light ph-whatsapp-logo"></i>
+        ou fale pelo WhatsApp →
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.png" alt="PetLab" loading="lazy" />
+        PetLab
+      </div>
+      <nav class="footer-links">
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <a href="comece-agora.html">Comece Agora</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+      <div class="footer-lang-wrap">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 PetLab. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ELEVENLABS_WIDGET -->
+  <div id="chat-placeholder">💬 Falar com PetLab</div>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script>
+    /* -------------------------------------------------------
+       Scroll Progress Bar
+    ------------------------------------------------------- */
+    const scrollProgressEl = document.getElementById('scrollProgress');
+
+    /* -------------------------------------------------------
+       Navbar scroll-to-pill
+    ------------------------------------------------------- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* -------------------------------------------------------
+       Mobile nav
+    ------------------------------------------------------- */
+    const hamburger = document.getElementById('navHamburger');
+    const mobilePanel = document.getElementById('navMobilePanel');
+    const navOverlay = document.getElementById('navOverlay');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('open');
+      navOverlay.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    navOverlay.addEventListener('click', () => {
+      mobilePanel.classList.remove('open');
+      navOverlay.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+
+    /* -------------------------------------------------------
+       Frame loading + scroll animation
+    ------------------------------------------------------- */
+    const FRAME_COUNT   = 151;
+    const DISMISS_AT    = 30;   // dismiss loader after 30 frames ready
+    const frames        = new Array(FRAME_COUNT);
+    let loadedCount     = 0;
+    let loaderDismissed = false;
+    let lastFrame       = -1;
+
+    const loaderEl  = document.getElementById('loader');
+    const loaderBar = document.getElementById('loaderBar');
+    const canvas    = document.getElementById('frameCanvas');
+    const ctx       = canvas.getContext('2d');
+
+    /* Size canvas to match hero */
+    function resizeCanvas() {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      if (lastFrame >= 0 && frames[lastFrame] && frames[lastFrame].complete) {
+        drawFrame(lastFrame);
+      }
+    }
+
+    function drawFrame(index) {
+      const img = frames[index];
+      if (!img || !img.complete || !img.naturalWidth) return;
+      const cw = canvas.width, ch = canvas.height;
+      const ir = img.naturalWidth / img.naturalHeight;
+      const cr = cw / ch;
+      let dw, dh, dx, dy;
+      if (cr > ir) { dw = cw; dh = cw / ir; } else { dh = ch; dw = ch * ir; }
+      dx = (cw - dw) / 2; dy = (ch - dh) / 2;
+      ctx.clearRect(0, 0, cw, ch);
+      ctx.drawImage(img, dx, dy, dw, dh);
+    }
+
+    function dismissLoader() {
+      if (loaderDismissed) return;
+      loaderDismissed = true;
+      loaderEl.style.animation = 'none';
+      loaderEl.style.transition = 'opacity 0.5s ease';
+      loaderEl.style.opacity = '0';
+      loaderEl.style.pointerEvents = 'none';
+      setTimeout(() => { loaderEl.style.visibility = 'hidden'; }, 520);
+      // Draw first available frame
+      const first = frames.findIndex(f => f && f.complete && f.naturalWidth > 0);
+      if (first >= 0) { lastFrame = first; drawFrame(first); }
+    }
+
+    // Hard fallback
+    setTimeout(dismissLoader, 4000);
+
+    function onFrameLoad() {
+      loadedCount++;
+      loaderBar.style.width = Math.min((loadedCount / FRAME_COUNT) * 100, 100) + '%';
+      if (loadedCount >= DISMISS_AT && !loaderDismissed) dismissLoader();
+    }
+
+    // Preload frames — handlers BEFORE src
+    for (let i = 0; i < FRAME_COUNT; i++) {
+      const img = new Image();
+      img.onload  = onFrameLoad;
+      img.onerror = onFrameLoad;
+      img.src = 'frames/frame_' + String(i + 1).padStart(4, '0') + '.jpg';
+      frames[i] = img;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    /* -------------------------------------------------------
+       Scroll → frame mapping (animation-scroll-space)
+    ------------------------------------------------------- */
+    const scrollSpace = document.querySelector('.animation-scroll-space');
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        // scroll progress bar
+        const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        scrollProgressEl.style.width = pct + '%';
+
+        // frame animation
+        const rect     = scrollSpace.getBoundingClientRect();
+        const scrolled = -rect.top;
+        const total    = rect.height - window.innerHeight;
+        const progress = Math.max(0, Math.min(1, scrolled / total));
+        const fi       = Math.min(FRAME_COUNT - 1, Math.floor(progress * FRAME_COUNT));
+
+        if (fi !== lastFrame) {
+          lastFrame = fi;
+          drawFrame(fi);
+        }
+
+        ticking = false;
+      });
+    }, { passive: true });
+
+    /* -------------------------------------------------------
+       Specs count-up
+    ------------------------------------------------------- */
+    function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+    function countUp(el, target, dur = 1600) {
+      const start = performance.now();
+      el.classList.add('counting');
+      function step(now) {
+        const p = Math.min((now - start) / dur, 1);
+        el.textContent = Math.floor(easeOutExpo(p) * target);
+        if (p < 1) requestAnimationFrame(step);
+        else { el.textContent = target; el.classList.remove('counting'); }
+      }
+      requestAnimationFrame(step);
+    }
+
+    let specsAnimated = false;
+    const specsObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !specsAnimated) {
+          specsAnimated = true;
+          document.querySelectorAll('.spec-item').forEach((item, i) => {
+            setTimeout(() => {
+              countUp(item.querySelector('.spec-number'), parseInt(item.dataset.target, 10));
+            }, i * 200);
+          });
+          specsObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    specsObs.observe(document.getElementById('specs'));
+
+    /* -------------------------------------------------------
+       Fade-up
+    ------------------------------------------------------- */
+    const fadeObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+    /* -------------------------------------------------------
+       Language switcher
+    ------------------------------------------------------- */
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      });
+    });
+  </script>
+
+</body>
+</html>

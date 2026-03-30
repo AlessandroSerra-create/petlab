@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Marcas — PetLab</title>
+  <meta name="description" content="O time de desenvolvimento de produto que você não tem. Para marcas pet que querem crescer sem montar uma equipe técnica interna." />
+  <meta property="og:title" content="Para Marcas — PetLab" />
+  <meta property="og:description" content="O time de desenvolvimento de produto que você não tem." />
+  <meta property="og:image" content="og-image.jpg" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
+  <link rel="stylesheet" href="style-shared.css" />
+
+  <style>
+    /* Problemas */
+    #problemas {
+      padding: 100px 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .problemas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .problema-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(13,43,31,0.07);
+      border-radius: 20px;
+      padding: 36px 32px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+    }
+    .problema-card:hover {
+      border-color: rgba(82,201,138,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 32px rgba(13,43,31,0.06);
+    }
+    .problema-card i {
+      font-size: 1.4rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .problema-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Solução before/after */
+    #solucao {
+      background: var(--bg-secondary);
+      padding: 100px 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .solucao-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .solucao-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .solucao-col-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 6px 16px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .col-antes .solucao-col-label {
+      color: #ff6b6b;
+      background: rgba(255,107,107,0.1);
+      border: 1px solid rgba(255,107,107,0.2);
+    }
+    .col-depois .solucao-col-label {
+      color: var(--accent);
+      background: rgba(var(--accent-rgb),0.1);
+      border: 1px solid rgba(var(--accent-rgb),0.2);
+    }
+    .solucao-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: #FFFFFF;
+      border: 1px solid rgba(13,43,31,0.07);
+    }
+    .solucao-item i {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .col-antes .solucao-item i { color: #ff6b6b; }
+    .col-depois .solucao-item i { color: var(--accent); }
+    .solucao-item span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Features */
+    #features-marcas {
+      padding: 100px 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .features-4-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* CTA */
+    #cta-marcas {
+      background: var(--bg-secondary);
+      padding: 120px 32px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    #cta-marcas h2 {
+      font-size: clamp(2rem,4vw,2.8rem);
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .problemas-grid, .features-4-grid { grid-template-columns: 1fr 1fr; }
+      .solucao-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .problemas-grid, .features-4-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="starscape"></canvas>
+  <div id="scrollProgress"></div>
+
+  <nav id="navbar" role="navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="PetLab logo" />
+        PetLab
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html" style="color:var(--text-primary)">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-mobile-panel" id="navMobilePanel">
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="como-funciona.html">Como Funciona</a>
+    <a href="para-marcas.html">Para Marcas</a>
+    <a href="fabricantes.html">Fabricantes</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="orb orb-accent" style="width:500px;height:500px;top:-150px;right:-100px;"></div>
+    <div class="orb orb-accent" style="width:350px;height:350px;bottom:-100px;left:-50px;opacity:0.07;"></div>
+    <div class="grid-overlay"></div>
+    <div style="position:relative;z-index:2;">
+      <div class="badge-tag">Para Marcas</div>
+      <h1>O time de desenvolvimento<br />de produto que <em>você não tem.</em></h1>
+      <p>Para marcas pet que querem crescer sem montar uma equipe técnica interna.</p>
+      <a href="comece-agora.html" class="btn-primary">Quero desenvolver meu produto →</a>
+    </div>
+  </section>
+
+  <!-- Problemas -->
+  <section id="problemas">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;margin-bottom:16px;">Reconhece?</p>
+      <h2 class="section-title">Reconhece algum desses cenários?</h2>
+      <p class="section-subtitle">Se sim, o PetLab foi feito para você.</p>
+      <div class="problemas-grid">
+        <div class="problema-card fade-up">
+          <i class="ph-light ph-warning-circle"></i>
+          <p>Meses perdidos procurando fabricante sem resultado concreto</p>
+        </div>
+        <div class="problema-card fade-up" style="transition-delay:0.15s">
+          <i class="ph-light ph-warning-circle"></i>
+          <p>Comunicação via WhatsApp sem rastreabilidade ou documentação</p>
+        </div>
+        <div class="problema-card fade-up" style="transition-delay:0.30s">
+          <i class="ph-light ph-warning-circle"></i>
+          <p>Contratos que você não entende, assinados com insegurança</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solução -->
+  <section id="solucao">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;margin-bottom:16px;">Solução</p>
+      <h2 class="section-title">Como o PetLab resolve</h2>
+      <p class="section-subtitle">Cada problema tem um processo. Cada processo tem um responsável.</p>
+      <div class="solucao-grid">
+        <div class="solucao-col col-antes fade-up">
+          <span class="solucao-col-label">Antes</span>
+          <div class="solucao-item">
+            <i class="ph-light ph-x"></i>
+            <span>Busca manual de fabricantes sem critério</span>
+          </div>
+          <div class="solucao-item">
+            <i class="ph-light ph-x"></i>
+            <span>Comunicação dispersa e sem histórico</span>
+          </div>
+          <div class="solucao-item">
+            <i class="ph-light ph-x"></i>
+            <span>Contratos genéricos sem proteção real</span>
+          </div>
+          <div class="solucao-item">
+            <i class="ph-light ph-x"></i>
+            <span>Amostra chegando meses depois do previsto</span>
+          </div>
+        </div>
+        <div class="solucao-col col-depois fade-up" style="transition-delay:0.2s">
+          <span class="solucao-col-label">Com PetLab</span>
+          <div class="solucao-item">
+            <i class="ph-light ph-check"></i>
+            <span>Rede pré-qualificada de fabricantes parceiros</span>
+          </div>
+          <div class="solucao-item">
+            <i class="ph-light ph-check"></i>
+            <span>Gestão centralizada com atualizações periódicas</span>
+          </div>
+          <div class="solucao-item">
+            <i class="ph-light ph-check"></i>
+            <span>NDA e contratos incluídos e explicados</span>
+          </div>
+          <div class="solucao-item">
+            <i class="ph-light ph-check"></i>
+            <span>Amostra em até 60 dias com cronograma definido</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features-marcas">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;margin-bottom:16px;">Diferenciais</p>
+      <h2 class="section-title">Por que escolher o PetLab</h2>
+      <p class="section-subtitle" style="margin-bottom:48px;">Quatro pilares que fazem a diferença no seu projeto.</p>
+      <div class="features-4-grid">
+        <div class="feature-card fade-up">
+          <div class="feature-icon"><i class="ph-light ph-users"></i></div>
+          <h3>Time dedicado</h3>
+          <p>Um profissional responsável pelo seu projeto do início ao fim.</p>
+        </div>
+        <div class="feature-card fade-up" style="transition-delay:0.12s">
+          <div class="feature-icon"><i class="ph-light ph-chart-line-up"></i></div>
+          <h3>Rastreabilidade total</h3>
+          <p>Cada etapa documentada. Você sabe exatamente onde está o projeto.</p>
+        </div>
+        <div class="feature-card fade-up" style="transition-delay:0.24s">
+          <div class="feature-icon"><i class="ph-light ph-seal-check"></i></div>
+          <h3>Contratos e NDAs</h3>
+          <p>Proteção jurídica incluída. Nenhuma surpresa desagradável.</p>
+        </div>
+        <div class="feature-card fade-up" style="transition-delay:0.36s">
+          <div class="feature-icon"><i class="ph-light ph-clock"></i></div>
+          <h3>60 dias</h3>
+          <p>Da ideia à amostra aprovada. Com cronograma e marcos definidos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta-marcas">
+    <div class="orb orb-accent" style="width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <h2>Pronto para ter seu produto?</h2>
+    <a href="comece-agora.html" class="btn-primary">Quero desenvolver meu produto →</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="logo.png" alt="PetLab" loading="lazy" />PetLab</div>
+      <nav class="footer-links">
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <a href="comece-agora.html">Comece Agora</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+      <div class="lang-switcher" style="justify-content:center; margin-bottom:24px;">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <p class="footer-copy">© 2026 PetLab. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <div id="chat-placeholder">💬 Falar com PetLab</div>
+  <!-- ELEVENLABS_WIDGET -->
+
+  <script>
+    (function() {
+      const canvas = document.getElementById('starscape');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      function createStars() { stars = []; for(let i=0;i<180;i++) stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,radius:0.3+Math.random()*1.2,baseOpacity:0.2+Math.random()*0.6,driftX:(Math.random()-0.5)*0.04,driftY:(Math.random()-0.5)*0.02,twinkleSpeed:0.0005+Math.random()*0.002,twinklePhase:Math.random()*Math.PI*2}); }
+      function resize() { const dpr=window.devicePixelRatio||1; canvas.width=window.innerWidth*dpr; canvas.height=window.innerHeight*dpr; canvas.style.width=window.innerWidth+'px'; canvas.style.height=window.innerHeight+'px'; createStars(); }
+      function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); const now=Date.now(); stars.forEach(s=>{ s.x+=s.driftX; s.y+=s.driftY; if(s.x<0)s.x=canvas.width; if(s.x>canvas.width)s.x=0; if(s.y<0)s.y=canvas.height; if(s.y>canvas.height)s.y=0; const t=Math.sin(now*s.twinkleSpeed+s.twinklePhase); const op=s.baseOpacity+t*0.3; ctx.beginPath(); ctx.arc(s.x,s.y,s.radius,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${Math.max(0,op)})`; ctx.fill(); }); requestAnimationFrame(animate); }
+      resize(); animate(); window.addEventListener('resize',resize);
+    })();
+    const sp=document.getElementById('scrollProgress');
+    window.addEventListener('scroll',()=>{sp.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';},{passive:true});
+    const navbar=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>{navbar.classList.toggle('nav-scrolled',window.scrollY>80);},{passive:true});
+    const hamburger=document.getElementById('navHamburger'),panel=document.getElementById('navMobilePanel'),overlay=document.getElementById('navOverlay');
+    hamburger.addEventListener('click',()=>{const open=panel.classList.toggle('open');overlay.classList.toggle('open',open);hamburger.setAttribute('aria-expanded',open);});
+    overlay.addEventListener('click',()=>{panel.classList.remove('open');overlay.classList.remove('open');hamburger.setAttribute('aria-expanded',false);});
+    const fadeObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});},{threshold:0.15});
+    document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
+
+    /* Language switcher */
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('.lang-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seja um Fabricante Parceiro — PetLab</title>
+  <meta name="description" content="Faça parte da rede PetLab. Receba projetos B2B estruturados com brief técnico completo, clientes validados e contratos de longo prazo. Sem custo de cadastro." />
+  <meta property="og:title" content="Seja um Fabricante Parceiro — PetLab" />
+  <meta property="og:description" content="Receba projetos B2B estruturados com brief técnico completo e contratos de longo prazo." />
+  <meta property="og:image" content="og-image.jpg" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
+  <link rel="stylesheet" href="style-shared.css" />
+
+  <style>
+    /* ============================================================
+       HERO FABRICANTES
+       ============================================================ */
+    #hero-fab {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 32px 100px;
+      background: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero-fab .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 840px;
+    }
+
+    .hero-pre {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #52C98A;
+      border: 1px solid rgba(82,201,138,0.3);
+      background: rgba(82,201,138,0.07);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    #hero-fab h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      color: #0D2B1F;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    #hero-fab .hero-sub {
+      font-size: 1.1rem;
+      color: #4A7A62;
+      line-height: 1.8;
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-fab-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: #4A7A62;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       PROBLEMA — bg secondary
+       ============================================================ */
+    #problema {
+      background: #F4F8F6;
+      padding: 100px 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #problema h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #0D2B1F;
+      text-align: center;
+      margin-bottom: 56px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .problema-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .problema-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(13,43,31,0.07);
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: all 0.3s ease;
+    }
+
+    .problema-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(82,201,138,0.35);
+      box-shadow: 0 8px 32px rgba(13,43,31,0.06);
+    }
+
+    .problema-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(82,201,138,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .problema-icon i { font-size: 1.5rem; color: #52C98A; }
+
+    .problema-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #52C98A;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .problema-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0D2B1F;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .problema-card p {
+      font-size: 0.875rem;
+      color: #4A7A62;
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       O QUE MUDA — bg white
+       ============================================================ */
+    #como-funciona-parceria {
+      background: #FFFFFF;
+      padding: 100px 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .features-2x3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       TIMELINE — bg secondary
+       ============================================================ */
+    #timeline {
+      background: #F4F8F6;
+      padding: 100px 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(82,201,138,0.2);
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      padding: 0 0 40px 0;
+      position: relative;
+    }
+
+    .timeline-step:last-child { padding-bottom: 0; }
+
+    .step-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid #52C98A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle i { font-size: 1.2rem; color: #52C98A; }
+
+    .step-body { flex: 1; padding-top: 8px; }
+
+    .step-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #52C98A;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .step-body h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0D2B1F;
+      margin-bottom: 6px;
+    }
+
+    .step-body p {
+      font-size: 0.875rem;
+      color: #4A7A62;
+      line-height: 1.65;
+    }
+
+    .timeline-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #4A7A62;
+      margin-top: 48px;
+      padding: 16px 24px;
+      background: rgba(82,201,138,0.07);
+      border-radius: 12px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================================
+       CRITÉRIOS — bg white
+       ============================================================ */
+    #criterios {
+      background: #FFFFFF;
+      padding: 100px 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .criterios-intro {
+      font-size: 1rem;
+      color: #4A7A62;
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .criterios-table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    th {
+      background: #0D2B1F;
+      color: #FFFFFF;
+      padding: 14px 20px;
+      text-align: left;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    th:first-child { border-radius: 12px 0 0 0; }
+    th:last-child  { border-radius: 0 12px 0 0; }
+
+    td {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(13,43,31,0.08);
+      font-size: 0.875rem;
+      color: #0D2B1F;
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(82,201,138,0.04); }
+
+    td:first-child { font-weight: 600; white-space: nowrap; }
+
+    .table-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #4A7A62;
+      margin-top: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================================
+       FAQ — bg secondary
+       ============================================================ */
+    #faq {
+      background: #F4F8F6;
+      padding: 100px 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(13,43,31,0.08);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      cursor: pointer;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      color: #0D2B1F;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      gap: 16px;
+    }
+
+    .faq-icon {
+      color: #52C98A;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      font-size: 0.9rem;
+      color: #4A7A62;
+      line-height: 1.75;
+    }
+
+    .faq-answer.open {
+      max-height: 200px;
+      padding-bottom: 20px;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ============================================================
+       CTA ACCENT — bg #52C98A
+       ============================================================ */
+    #cta-fab {
+      background: #52C98A;
+      padding: 120px 32px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    #cta-fab h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      color: #0D2B1F;
+      margin-bottom: 20px;
+    }
+
+    #cta-fab p {
+      font-size: 1.1rem;
+      color: rgba(13,43,31,0.75);
+      margin-bottom: 40px;
+      line-height: 1.65;
+    }
+
+    #cta-fab .btn-dark {
+      display: inline-block;
+      background: #0D2B1F;
+      color: #FFFFFF;
+      padding: 18px 44px;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 2px solid #0D2B1F;
+    }
+
+    #cta-fab .btn-dark:hover {
+      background: #1E5C3A;
+      border-color: #1E5C3A;
+      transform: translateY(-2px);
+    }
+
+    #cta-fab .cta-note {
+      font-size: 0.78rem;
+      color: rgba(13,43,31,0.6);
+      margin-top: 20px;
+    }
+
+    /* ============================================================
+       FORMULÁRIO — bg white
+       ============================================================ */
+    #candidatura {
+      background: #FFFFFF;
+      padding: 100px 32px 120px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-fab-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .form-fab-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(13,43,31,0.08);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 4px 32px rgba(13,43,31,0.06);
+    }
+
+    .field-group {
+      margin-bottom: 22px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #4A7A62;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      background: #FAFAFA;
+      border: 1px solid rgba(13,43,31,0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #0D2B1F;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus {
+      border-color: #0D2B1F;
+      box-shadow: 0 0 0 3px rgba(13,43,31,0.06);
+      background: #FFFFFF;
+    }
+
+    .field-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .field-group input::placeholder,
+    .field-group textarea::placeholder {
+      color: rgba(74,122,98,0.45);
+    }
+
+    .field-optional {
+      font-size: 0.68rem;
+      color: #4A7A62;
+      opacity: 0.6;
+      margin-left: 6px;
+      text-transform: lowercase;
+      letter-spacing: 0;
+    }
+
+    /* Checkbox grids */
+    .checkbox-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .checkbox-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    .cb-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: #0D2B1F;
+      cursor: pointer;
+      padding: 10px 12px;
+      border: 1px solid rgba(13,43,31,0.1);
+      border-radius: 8px;
+      background: #FAFAFA;
+      transition: all 0.2s ease;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+
+    .cb-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #52C98A;
+      flex-shrink: 0;
+    }
+
+    .cb-label:has(input:checked) {
+      border-color: #52C98A;
+      background: rgba(82,201,138,0.06);
+    }
+
+    .cb-label:hover {
+      border-color: rgba(82,201,138,0.4);
+      background: #FFFFFF;
+    }
+
+    .field-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: #0D2B1F;
+      color: #FFFFFF;
+      padding: 16px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      background: #1E5C3A;
+      transform: translateY(-1px);
+    }
+
+    .form-submit-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #4A7A62;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 900px) {
+      .problema-grid { grid-template-columns: 1fr; }
+      .features-2x3  { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      #hero-fab { padding: 120px 20px 80px; }
+      .features-2x3 { grid-template-columns: 1fr; }
+      .form-fab-card { padding: 28px 24px; }
+      .field-2col { grid-template-columns: 1fr; }
+      .checkbox-grid-2 { grid-template-columns: 1fr; }
+      .checkbox-grid-3 { grid-template-columns: 1fr 1fr; }
+      #cta-fab { padding: 80px 20px; }
+      .timeline-wrap::before { left: 23px; }
+    }
+
+    @media (max-width: 480px) {
+      .checkbox-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scrollProgress"></div>
+
+  <!-- Navbar -->
+  <nav id="navbar" role="navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="PetLab logo" />
+        PetLab
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html" style="color:var(--text-primary)">Fabricantes</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-mobile-panel" id="navMobilePanel">
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="como-funciona.html">Como Funciona</a>
+    <a href="para-marcas.html">Para Marcas</a>
+    <a href="fabricantes.html">Fabricantes</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+  </div>
+
+  <!-- ============================================================
+       SEÇÃO 1 — HERO
+       ============================================================ -->
+  <section id="hero-fab">
+    <div class="orb orb-accent" style="width:500px;height:500px;top:-120px;right:-80px;"></div>
+    <div class="orb orb-accent" style="width:300px;height:300px;bottom:-80px;left:-60px;opacity:0.06;"></div>
+    <div class="hero-inner">
+      <span class="hero-pre">Rede de Parceiros — PetLab</span>
+      <h1>Encha sua capacidade produtiva com clientes qualificados e projetos estruturados.</h1>
+      <p class="hero-sub">
+        Somos uma agência de intermediação B2B especializada em pet.
+        Conectamos você às marcas certas — com brief técnico pronto,
+        NDA assinado e contrato de longo prazo.<br>
+        Você produz. A gente traz os clientes.
+      </p>
+      <div class="hero-fab-btns">
+        <a href="#candidatura" class="btn-primary">→ Quero fazer parte da rede</a>
+        <a href="#como-funciona-parceria" class="btn-secondary">Ver como funciona a parceria ↓</a>
+      </div>
+      <p class="hero-note">Rede seletiva · Somente fabricantes verificados · Projetos com brief técnico padronizado</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 2 — O PROBLEMA
+       ============================================================ -->
+  <section id="problema">
+    <div class="section-container">
+      <h2>Você produz. O problema é chegar nas marcas certas.</h2>
+      <div class="problema-grid">
+        <div class="problema-card fade-up">
+          <div class="problema-icon"><i class="ph-light ph-warehouse"></i></div>
+          <span class="problema-tag">Capacidade Ociosa</span>
+          <h3>Tenho estrutura para produzir muito mais</h3>
+          <p>Feiras, cold outreach, indicações. O esforço comercial é caro, lento e traz leads que pedem orçamento e somem.</p>
+        </div>
+        <div class="problema-card fade-up" style="transition-delay:0.15s">
+          <div class="problema-icon"><i class="ph-light ph-file-dashed"></i></div>
+          <span class="problema-tag">Briefs Mal Definidos</span>
+          <h3>Semanas de vai e vem tentando entender o cliente</h3>
+          <p>Sem um processo estruturado, você investe tempo e matéria-prima em projetos que não convertem.</p>
+        </div>
+        <div class="problema-card fade-up" style="transition-delay:0.30s">
+          <div class="problema-icon"><i class="ph-light ph-chart-line-down"></i></div>
+          <span class="problema-tag">Pedidos Imprevisíveis</span>
+          <h3>Impossível planejar produção sem previsibilidade</h3>
+          <p>Clientes que somem, pedidos esporádicos, sem contrato. É impossível otimizar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 3 — O QUE MUDA COM A PETLAB
+       ============================================================ -->
+  <section id="como-funciona-parceria">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;">Diferenciais</p>
+      <h2 class="section-title">O que você recebe em cada projeto da nossa rede</h2>
+      <p class="section-subtitle">Cada projeto chega estruturado. Você foca em produzir.</p>
+      <div class="features-2x3">
+        <div class="feature-card fade-up">
+          <div class="feature-icon"><i class="ph-light ph-clipboard-text"></i></div>
+          <h3>Brief técnico completo</h3>
+          <p>Cada projeto chega com categoria definida, ingredientes, volumes, MOQ, prazo e budget. Sem semanas de esclarecimento.</p>
+        </div>
+        <div class="feature-card fade-up" style="transition-delay:0.1s">
+          <div class="feature-icon"><i class="ph-light ph-check-circle"></i></div>
+          <h3>Leads já validados</h3>
+          <p>Só chegam projetos com decisor identificado, intenção real de produção e capacidade de fechar.</p>
+        </div>
+        <div class="feature-card fade-up" style="transition-delay:0.2s">
+          <div class="feature-icon"><i class="ph-light ph-lock"></i></div>
+          <h3>NDA assinado pela marca</h3>
+          <p>Antes de qualquer contato técnico, a marca já assinou o NDA. Suas fórmulas estão protegidas.</p>
+        </div>
+        <div class="feature-card fade-up" style="transition-delay:0.1s">
+          <div class="feature-icon"><i class="ph-light ph-handshake"></i></div>
+          <h3>Contrato estruturado</h3>
+          <p>Gerenciamos o contrato — pagamento, MOQ, prazo e exclusividade de fórmula. Sem negociar no escuro.</p>
+        </div>
+        <div class="feature-card fade-up" style="transition-delay:0.2s">
+          <div class="feature-icon"><i class="ph-light ph-arrow-clockwise"></i></div>
+          <h3>Relacionamento de longo prazo</h3>
+          <p>Contrato de 3 anos com a marca = pedidos recorrentes para você. Não é um cliente de uma vez.</p>
+        </div>
+        <div class="feature-card fade-up" style="transition-delay:0.3s">
+          <div class="feature-icon"><i class="ph-light ph-megaphone-slash"></i></div>
+          <h3>Sem esforço comercial</h3>
+          <p>Você não vai a feiras por nossa causa. Nós fazemos toda a parte comercial. Você foca em produzir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 4 — COMO FUNCIONA A PARCERIA (TIMELINE)
+       ============================================================ -->
+  <section id="timeline">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;">O Processo</p>
+      <h2 class="section-title">Do cadastro ao primeiro pedido — em 6 passos</h2>
+      <p class="section-subtitle" style="margin-bottom:56px;">Simples, transparente e rápido.</p>
+      <div class="timeline-wrap">
+
+        <div class="timeline-step fade-up">
+          <div class="step-circle"><i class="ph-light ph-pencil-line"></i></div>
+          <div class="step-body">
+            <span class="step-num">Passo 01</span>
+            <h3>Candidatura</h3>
+            <p>Você preenche o formulário com dados da empresa, categorias, certificações, MOQ e capacidade mensal. Revisamos em até 48 horas.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step fade-up" style="transition-delay:0.1s">
+          <div class="step-circle"><i class="ph-light ph-video-camera"></i></div>
+          <div class="step-body">
+            <span class="step-num">Passo 02</span>
+            <h3>Validação técnica</h3>
+            <p>Call de 30 minutos para conhecer sua operação, confirmar certificações e alinhar o processo. Queremos saber seus pontos fortes.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step fade-up" style="transition-delay:0.2s">
+          <div class="step-circle"><i class="ph-light ph-list-dashes"></i></div>
+          <div class="step-body">
+            <span class="step-num">Passo 03</span>
+            <h3>Cadastro no catálogo</h3>
+            <p>Você cadastra seus produtos via planilha CSV/Excel. Quanto mais completo, mais matches você recebe. Suporte da nossa equipe no onboarding.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step fade-up" style="transition-delay:0.3s">
+          <div class="step-circle"><i class="ph-light ph-bell"></i></div>
+          <div class="step-body">
+            <span class="step-num">Passo 04</span>
+            <h3>Match e convite para cotação</h3>
+            <p>Quando um brief faz match com seu catálogo, você recebe o brief completo e decide se quer participar. Sem obrigação.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step fade-up" style="transition-delay:0.4s">
+          <div class="step-circle"><i class="ph-light ph-flask"></i></div>
+          <div class="step-body">
+            <span class="step-num">Passo 05</span>
+            <h3>Amostra e aprovação</h3>
+            <p>Se selecionado, você produz a amostra. A PetLab acompanha e gerencia o feedback da marca. Sem contato direto nesta fase.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step fade-up" style="transition-delay:0.5s">
+          <div class="step-circle"><i class="ph-light ph-rocket-launch"></i></div>
+          <div class="step-body">
+            <span class="step-num">Passo 06</span>
+            <h3>Contrato e produção recorrente</h3>
+            <p>Amostra aprovada, contratos assinados. Cliente garantido por 3 anos.</p>
+          </div>
+        </div>
+
+      </div>
+      <p class="timeline-note">⏱ Tempo médio do cadastro ao primeiro projeto: 2 a 4 semanas</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 5 — CRITÉRIOS DE SELEÇÃO
+       ============================================================ -->
+  <section id="criterios">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;">Critérios</p>
+      <h2 class="section-title">Uma rede seletiva. Por design.</h2>
+      <p class="criterios-intro">Não trabalhamos com qualquer fabricante — trabalhamos com os melhores para cada categoria. Isso protege as marcas e protege você.</p>
+      <div class="criterios-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Critério</th>
+              <th>Requisito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Certificação</td>
+              <td>ANVISA (BR), SENASAG (AR), COFEPRIS (MX) ou equivalente do país</td>
+            </tr>
+            <tr>
+              <td>Capacidade</td>
+              <td>Produção mensal mínima de 5.000 unidades</td>
+            </tr>
+            <tr>
+              <td>Categorias</td>
+              <td>Pelo menos uma das 6 categorias da rede</td>
+            </tr>
+            <tr>
+              <td>Documentação</td>
+              <td>CNPJ/registro ativo, laudos de qualidade</td>
+            </tr>
+            <tr>
+              <td>Histórico</td>
+              <td>Track record verificável — referências ou amostras de produção anterior</td>
+            </tr>
+            <tr>
+              <td>Processo</td>
+              <td>Disposição para seguir brief padronizado e fornecer amostras dentro do prazo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Fabricantes com rating abaixo de 4.0 por dois projetos consecutivos são revisados.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 6 — FAQ
+       ============================================================ -->
+  <section id="faq">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;">Dúvidas</p>
+      <h2 class="section-title">Perguntas frequentes</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Preciso pagar algo para entrar na rede?
+            <i class="ph-light ph-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">Não. Nosso modelo é baseado em comissão sobre a produção efetivada. Não existe taxa de cadastro, mensalidade ou custo de participação.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Como funciona a comissão na prática?
+            <i class="ph-light ph-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">A comissão já está incluída no preço final apresentado à marca. Você define seu preço de fabricação, nós adicionamos nossa margem. Transparente e sem surpresas.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Posso recusar um projeto?
+            <i class="ph-light ph-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">Sim, sempre. Você decide livremente se quer participar da cotação. Não há obrigação de aceitar.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Vocês interferem na minha precificação?
+            <i class="ph-light ph-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">Não. Você define o seu preço de produção. Nós adicionamos nossa comissão por cima. Nunca pedimos que você abaixe seu preço.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Como funciona a exclusividade de fórmula?
+            <i class="ph-light ph-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">Protege a fórmula específica daquela marca por 3 anos. Os outros produtos do seu catálogo, incluindo bases similares, ficam completamente livres.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Posso cadastrar todo o meu catálogo?
+            <i class="ph-light ph-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">Sim, e recomendamos. Quanto mais completo, mais projetos fazem match. O cadastro é via planilha — nossa equipe ajuda no onboarding.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            O que acontece se não conseguir entregar a amostra no prazo?
+            <i class="ph-light ph-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">Nos avise imediatamente — gerenciamos a expectativa com a marca. Atrasos não comunicados afetam seu rating interno.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Vocês trabalham com fabricantes fora do Brasil?
+            <i class="ph-light ph-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">Sim. Brasil, Argentina, México, Colômbia e EUA. Projetos internacionais têm requisitos específicos que avaliamos caso a caso.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 7 — CTA FINAL ACCENT
+       ============================================================ -->
+  <section id="cta-fab">
+    <h2>Pronto para receber projetos estruturados?</h2>
+    <p>Preencha o formulário de candidatura.<br>Nossa equipe revisa em até 48 horas.</p>
+    <a href="#candidatura" class="btn-dark">→ Enviar minha candidatura</a>
+    <p class="cta-note">🔒 Processo confidencial · Sem custo de cadastro · Resposta em até 48h</p>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 8 — FORMULÁRIO DE CANDIDATURA
+       ============================================================ -->
+  <section id="candidatura">
+    <div class="section-container">
+      <p class="badge-tag" style="display:block;text-align:center;">Candidatura</p>
+      <h2 class="section-title">Candidatura à Rede PetLab</h2>
+      <p class="section-subtitle">Preencha com cuidado — quanto mais completo, mais rápida a análise.</p>
+      <div class="form-fab-wrap">
+        <div class="form-fab-card">
+          <form id="fabForm" novalidate>
+
+            <div class="field-group">
+              <label>Nome da empresa *</label>
+              <input type="text" name="empresa" placeholder="Razão social ou nome fantasia" required />
+            </div>
+
+            <div class="field-group">
+              <label>País + Estado/Cidade *</label>
+              <input type="text" name="localizacao" placeholder="Ex: Brasil — São Paulo, SP" required />
+            </div>
+
+            <div class="field-2col">
+              <div class="field-group">
+                <label>Nome do responsável *</label>
+                <input type="text" name="responsavel" placeholder="Nome completo" required />
+              </div>
+              <div class="field-group">
+                <label>E-mail *</label>
+                <input type="email" name="email" placeholder="seu@email.com" required />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>WhatsApp / Telefone <span class="field-optional">(opcional)</span></label>
+              <input type="tel" name="whatsapp" placeholder="+55 11 99999-9999" />
+            </div>
+
+            <div class="field-group">
+              <label>Categorias que produz *</label>
+              <div class="checkbox-grid-2">
+                <label class="cb-label"><input type="checkbox" name="cat_higiene" /> Higiene &amp; Grooming</label>
+                <label class="cb-label"><input type="checkbox" name="cat_alimentos" /> Alimentos &amp; Petiscos</label>
+                <label class="cb-label"><input type="checkbox" name="cat_suplementos" /> Suplementos</label>
+                <label class="cb-label"><input type="checkbox" name="cat_acessorios" /> Acessórios</label>
+                <label class="cb-label"><input type="checkbox" name="cat_habitat" /> Habitat</label>
+                <label class="cb-label"><input type="checkbox" name="cat_natural" /> Natural/Orgânico</label>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Certificações ativas <span class="field-optional">(selecione todas que se aplicam)</span></label>
+              <div class="checkbox-grid-3">
+                <label class="cb-label"><input type="checkbox" name="cert_anvisa" /> ANVISA</label>
+                <label class="cb-label"><input type="checkbox" name="cert_mapa" /> MAPA</label>
+                <label class="cb-label"><input type="checkbox" name="cert_ecocert" /> ECOCERT</label>
+                <label class="cb-label"><input type="checkbox" name="cert_iso" /> ISO 9001</label>
+                <label class="cb-label"><input type="checkbox" name="cert_fda" /> FDA</label>
+                <label class="cb-label"><input type="checkbox" name="cert_senasag" /> SENASAG</label>
+                <label class="cb-label"><input type="checkbox" name="cert_cofepris" /> COFEPRIS</label>
+                <label class="cb-label"><input type="checkbox" name="cert_outra" /> Outra</label>
+              </div>
+            </div>
+
+            <div class="field-2col">
+              <div class="field-group">
+                <label>MOQ mínimo (unidades) *</label>
+                <input type="number" name="moq" placeholder="Ex: 500" min="1" required />
+              </div>
+              <div class="field-group">
+                <label>Capacidade mensal estimada *</label>
+                <input type="number" name="capacidade" placeholder="Ex: 50000" min="1" required />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Seus 3 principais produtos ou linhas *</label>
+              <textarea name="produtos" rows="4" placeholder="Descreva brevemente suas principais linhas de produção, ingredientes-chave e diferenciais técnicos." required></textarea>
+            </div>
+
+            <div class="field-group">
+              <label>Site ou portfólio <span class="field-optional">(opcional)</span></label>
+              <input type="url" name="site" placeholder="https://suaempresa.com.br" />
+            </div>
+
+            <button type="submit" class="form-submit">✓ Enviar candidatura</button>
+          </form>
+          <p class="form-submit-note">Após o envio, nossa equipe analisa e entra em contato em até 48 horas para agendar a call de validação técnica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="logo.png" alt="PetLab" loading="lazy" />PetLab</div>
+      <nav class="footer-links">
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <a href="comece-agora.html">Comece Agora</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+      <div class="lang-switcher" style="justify-content:center; margin-bottom:24px;">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <p class="footer-copy">© 2026 PetLab. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <div id="chat-placeholder">💬 Falar com PetLab</div>
+  <!-- ELEVENLABS_WIDGET -->
+
+  <script>
+    /* Scroll progress */
+    const sp = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      sp.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+    }, { passive: true });
+
+    /* Navbar pill */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* Mobile nav */
+    const hamburger = document.getElementById('navHamburger');
+    const mobilePanel = document.getElementById('navMobilePanel');
+    const overlay = document.getElementById('navOverlay');
+    hamburger.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('open');
+      overlay.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    overlay.addEventListener('click', () => {
+      mobilePanel.classList.remove('open');
+      overlay.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+
+    /* FAQ accordion */
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item   = q.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-answer').classList.remove('open');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.classList.add('open');
+        }
+      });
+    });
+
+    /* Form submit → obrigado.html */
+    document.getElementById('fabForm').addEventListener('submit', e => {
+      e.preventDefault();
+      window.location.href = 'obrigado.html';
+    });
+
+    /* Fade-up */
+    const fadeObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+    /* Language switcher */
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      });
+    });
+  </script>
+</body>
+</html>

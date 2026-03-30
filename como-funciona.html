@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Funciona — PetLab</title>
+  <meta name="description" content="7 etapas. Um processo. Zero caos. Do primeiro contato à amostra aprovada, cada projeto PetLab segue um processo definido e rastreável." />
+  <meta property="og:title" content="Como Funciona — PetLab" />
+  <meta property="og:description" content="7 etapas. Um processo. Zero caos." />
+  <meta property="og:image" content="og-image.jpg" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
+  <link rel="stylesheet" href="style-shared.css" />
+
+  <style>
+    /* =====================================================
+       SCROLL-DRIVEN PROCESS NAVIGATOR
+       ===================================================== */
+
+    .process-scroll-wrapper {
+      height: calc(100vh * 5.6);
+      position: relative;
+    }
+
+    .process-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 48px;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    /* Header inside sticky */
+    .process-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .process-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #0D2B1F;
+      background: rgba(82,201,138,0.1);
+      border: 1px solid rgba(82,201,138,0.3);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .process-header h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      font-weight: 700;
+      color: #0D2B1F;
+      margin-bottom: 6px;
+    }
+
+    .process-header p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Layout grid */
+    .process-layout {
+      display: grid;
+      grid-template-columns: 35% 65%;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      align-items: center;
+      flex: 1;
+    }
+
+    /* Left — tab list */
+    .process-tabs {
+      padding-right: 40px;
+    }
+
+    .process-tab {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      border-radius: 0 8px 8px 0;
+      transition: all 0.3s ease;
+    }
+
+    .process-tab:hover {
+      background: rgba(82,201,138,0.06);
+    }
+
+    .process-tab.active {
+      border-left-color: #52C98A;
+      background: rgba(82,201,138,0.06);
+    }
+
+    .tab-number {
+      font-family: 'Sora', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+      color: rgba(13,43,31,0.12);
+      transition: color 0.3s ease;
+      flex-shrink: 0;
+      min-width: 48px;
+    }
+
+    .process-tab.active .tab-number {
+      color: #52C98A;
+    }
+
+    .tab-name {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding-top: 8px;
+      transition: color 0.3s ease;
+      line-height: 1.3;
+    }
+
+    .process-tab.active .tab-name {
+      color: #0D2B1F;
+    }
+
+    /* Right — panel */
+    .process-panel {
+      position: relative;
+      min-height: 360px;
+    }
+
+    .panel-content {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      pointer-events: none;
+    }
+
+    .panel-content.active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+      pointer-events: auto;
+    }
+
+    .panel-inner {
+      background: #FFFFFF;
+      border: 1px solid rgba(13,43,31,0.08);
+      border-radius: 24px;
+      padding: 40px 48px;
+      box-shadow: 0 2px 20px rgba(13,43,31,0.04);
+    }
+
+    .panel-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(82,201,138,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .panel-icon i {
+      font-size: 1.6rem;
+      color: #52C98A;
+    }
+
+    .panel-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #0D2B1F;
+    }
+
+    .panel-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .panel-output {
+      background: rgba(82,201,138,0.05);
+      border: 1px solid rgba(82,201,138,0.15);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #0D2B1F;
+    }
+
+    .panel-output-label {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #52C98A;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    /* Progress bar */
+    .process-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(13,43,31,0.08);
+    }
+
+    .process-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #52C98A, #0D2B1F);
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    /* Step counter */
+    .step-counter {
+      position: absolute;
+      top: 90px;
+      right: 64px;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+    }
+
+    /* =====================================================
+       CTA
+       ===================================================== */
+    #cta-process {
+      padding: 120px 32px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      background: var(--bg-secondary);
+    }
+
+    #cta-process h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+
+    /* =====================================================
+       MOBILE — scroll-driven → click accordion
+       ===================================================== */
+    @media (max-width: 900px) {
+      .process-scroll-wrapper {
+        height: auto;
+      }
+
+      .process-sticky {
+        position: relative;
+        height: auto;
+        min-height: unset;
+        padding: 80px 24px 60px;
+        overflow: visible;
+      }
+
+      .process-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+      }
+
+      .process-tabs {
+        padding-right: 0;
+        margin-bottom: 0;
+      }
+
+      .process-tab {
+        border-left: none;
+        border-bottom: 1px solid rgba(13,43,31,0.07);
+        border-radius: 12px 12px 0 0;
+        cursor: pointer;
+      }
+
+      .process-tab.active {
+        border-bottom-color: #52C98A;
+        background: rgba(82,201,138,0.06);
+      }
+
+      .tab-number { font-size: 2rem; min-width: 36px; }
+
+      .panel-content {
+        position: relative;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .panel-content.active {
+        max-height: 800px;
+        opacity: 1;
+        position: relative;
+      }
+
+      .panel-inner {
+        padding: 24px 20px;
+        border-radius: 0 0 12px 12px;
+        border-top: none;
+      }
+
+      .process-progress-bar,
+      .step-counter { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .process-sticky { padding: 60px 20px 40px; }
+      #cta-process { padding: 80px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scrollProgress"></div>
+
+  <!-- Navbar -->
+  <nav id="navbar" role="navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="PetLab logo" />
+        PetLab
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="como-funciona.html" style="color:var(--text-primary)">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-mobile-panel" id="navMobilePanel">
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="como-funciona.html">Como Funciona</a>
+    <a href="para-marcas.html">Para Marcas</a>
+    <a href="fabricantes.html">Fabricantes</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="orb orb-accent" style="width:500px;height:500px;top:-150px;right:-100px;"></div>
+    <div class="orb orb-accent" style="width:350px;height:350px;bottom:-100px;left:-50px;opacity:0.07;"></div>
+    <div class="grid-overlay"></div>
+    <div style="position:relative;z-index:2;">
+      <div class="badge-tag">Processo</div>
+      <h1>7 etapas.<br /><em>Um processo.</em><br />Zero caos.</h1>
+      <p>Do primeiro contato à amostra aprovada, cada projeto segue um processo definido e rastreável.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SCROLL-DRIVEN PROCESS NAVIGATOR
+       ============================================================ -->
+  <div class="process-scroll-wrapper">
+    <div class="process-sticky">
+
+      <!-- Step counter (top-right) -->
+      <div class="step-counter" id="stepCounter">01 / 07</div>
+
+      <!-- Header -->
+      <div class="process-header">
+        <span class="process-badge">O PROCESSO</span>
+        <h2>7 etapas. Um processo. Zero caos.</h2>
+        <p>Do primeiro contato à amostra aprovada.</p>
+      </div>
+
+      <!-- Layout: tabs left, panel right -->
+      <div class="process-layout">
+
+        <!-- Left: tab list -->
+        <div class="process-tabs">
+          <div class="process-tab active" data-step="0">
+            <span class="tab-number">01</span>
+            <span class="tab-name">Briefing inicial</span>
+          </div>
+          <div class="process-tab" data-step="1">
+            <span class="tab-number">02</span>
+            <span class="tab-name">Busca de fabricante</span>
+          </div>
+          <div class="process-tab" data-step="2">
+            <span class="tab-number">03</span>
+            <span class="tab-name">NDA e contrato</span>
+          </div>
+          <div class="process-tab" data-step="3">
+            <span class="tab-number">04</span>
+            <span class="tab-name">Especificação técnica</span>
+          </div>
+          <div class="process-tab" data-step="4">
+            <span class="tab-number">05</span>
+            <span class="tab-name">Desenvolvimento de amostra</span>
+          </div>
+          <div class="process-tab" data-step="5">
+            <span class="tab-number">06</span>
+            <span class="tab-name">Aprovação da amostra</span>
+          </div>
+          <div class="process-tab" data-step="6">
+            <span class="tab-number">07</span>
+            <span class="tab-name">Produção e entrega</span>
+          </div>
+        </div>
+
+        <!-- Right: panel contents -->
+        <div class="process-panel">
+
+          <div class="panel-content active">
+            <div class="panel-inner">
+              <div class="panel-icon"><i class="ph-light ph-clipboard-text"></i></div>
+              <h2 class="panel-title">Entendemos o que você quer criar</h2>
+              <p class="panel-desc">Você preenche o formulário de intake com as informações do produto que quer desenvolver: categoria, público, diferenciais desejados, volume inicial estimado. Nenhum conhecimento técnico necessário.</p>
+              <div class="panel-output">
+                <span class="panel-output-label">O que você recebe</span>
+                📋 Brief do projeto aprovado
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content">
+            <div class="panel-inner">
+              <div class="panel-icon"><i class="ph-light ph-factory"></i></div>
+              <h2 class="panel-title">Acessamos nossa rede de fabricantes</h2>
+              <p class="panel-desc">Com o brief em mãos, buscamos na nossa rede os fabricantes mais adequados para a sua categoria de produto. Você não precisa fazer nenhuma pesquisa — nós já temos os contatos qualificados.</p>
+              <div class="panel-output">
+                <span class="panel-output-label">O que você recebe</span>
+                🏭 3 fabricantes pré-qualificados
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content">
+            <div class="panel-inner">
+              <div class="panel-icon"><i class="ph-light ph-file-lock"></i></div>
+              <h2 class="panel-title">Protegemos sua ideia antes de qualquer conversa</h2>
+              <p class="panel-desc">Antes de compartilhar qualquer detalhe com fabricantes, garantimos que a sua ideia está protegida com NDA. Cuidamos de toda a parte contratual — você só precisa assinar.</p>
+              <div class="panel-output">
+                <span class="panel-output-label">O que você recebe</span>
+                ✍️ NDA assinado com fabricante selecionado
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content">
+            <div class="panel-inner">
+              <div class="panel-icon"><i class="ph-light ph-flask"></i></div>
+              <h2 class="panel-title">Traduzimos sua ideia em linguagem técnica</h2>
+              <p class="panel-desc">Criamos o dossiê técnico do produto: fórmula, ingredientes, especificações de embalagem, parâmetros de qualidade. Você aprova, nós enviamos ao fabricante.</p>
+              <div class="panel-output">
+                <span class="panel-output-label">O que você recebe</span>
+                📄 Especificação técnica completa
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content">
+            <div class="panel-inner">
+              <div class="panel-icon"><i class="ph-light ph-test-tube"></i></div>
+              <h2 class="panel-title">O fabricante produz, nós acompanhamos</h2>
+              <p class="panel-desc">Gerenciamos toda a comunicação com o fabricante durante o desenvolvimento. Você recebe atualizações claras e objetivas — sem ruído, sem WhatsApp informal.</p>
+              <div class="panel-output">
+                <span class="panel-output-label">O que você recebe</span>
+                📦 Amostra física entregue para você
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content">
+            <div class="panel-inner">
+              <div class="panel-icon"><i class="ph-light ph-check-square"></i></div>
+              <h2 class="panel-title">Você testa, nós ajustamos</h2>
+              <p class="panel-desc">Você recebe a amostra, testa e nos dá feedback. Se precisar de ajustes, gerenciamos as revisões com o fabricante. O ciclo se repete até a aprovação final.</p>
+              <div class="panel-output">
+                <span class="panel-output-label">O que você recebe</span>
+                ✅ Amostra aprovada e assinada
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content">
+            <div class="panel-inner">
+              <div class="panel-icon"><i class="ph-light ph-package"></i></div>
+              <h2 class="panel-title">Amostra aprovada, produção autorizada</h2>
+              <p class="panel-desc">Com a amostra aprovada, autorizamos a produção em escala. Acompanhamos controle de qualidade, prazo e logística até a entrega no seu endereço.</p>
+              <div class="panel-output">
+                <span class="panel-output-label">O que você recebe</span>
+                🚀 Produto no seu estoque
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /process-panel -->
+      </div><!-- /process-layout -->
+
+      <!-- Progress bar -->
+      <div class="process-progress-bar">
+        <div class="process-progress-fill" id="processProgress"></div>
+      </div>
+
+    </div><!-- /process-sticky -->
+  </div><!-- /process-scroll-wrapper -->
+
+  <!-- CTA -->
+  <section id="cta-process">
+    <div class="orb orb-accent" style="width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <h2>Pronto para começar?</h2>
+    <a href="comece-agora.html" class="btn-primary">Preencher o formulário →</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="logo.png" alt="PetLab" loading="lazy" />PetLab</div>
+      <nav class="footer-links">
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="para-marcas.html">Para Marcas</a>
+        <a href="fabricantes.html">Fabricantes</a>
+        <a href="comece-agora.html">Comece Agora</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+      <div class="lang-switcher" style="justify-content:center; margin-bottom:24px;">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <p class="footer-copy">© 2026 PetLab. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <div id="chat-placeholder">💬 Falar com PetLab</div>
+  <!-- ELEVENLABS_WIDGET -->
+
+  <script>
+    /* Scroll progress bar */
+    const sp = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      sp.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+    }, { passive: true });
+
+    /* Navbar pill */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* Mobile nav */
+    const hamburger = document.getElementById('navHamburger');
+    const mobilePanel = document.getElementById('navMobilePanel');
+    const overlay = document.getElementById('navOverlay');
+    hamburger.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('open');
+      overlay.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    overlay.addEventListener('click', () => {
+      mobilePanel.classList.remove('open');
+      overlay.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+
+    /* -------------------------------------------------------
+       SCROLL-DRIVEN PROCESS NAVIGATOR
+    ------------------------------------------------------- */
+    const processWrapper = document.querySelector('.process-scroll-wrapper');
+    const processTabs    = document.querySelectorAll('.process-tab');
+    const panelContents  = document.querySelectorAll('.panel-content');
+    const progressFill   = document.getElementById('processProgress');
+    const stepCounter    = document.getElementById('stepCounter');
+    const TOTAL_STEPS    = 7;
+    let currentStep      = 0;
+    const isMobile       = () => window.innerWidth <= 900;
+
+    function goToStep(step) {
+      if (step === currentStep && !isMobile()) return;
+      currentStep = step;
+
+      /* Update tabs */
+      processTabs.forEach((tab, i) => tab.classList.toggle('active', i === step));
+
+      /* Update panels */
+      panelContents.forEach((panel, i) => panel.classList.toggle('active', i === step));
+
+      /* Update progress bar */
+      progressFill.style.width = ((step + 1) / TOTAL_STEPS * 100) + '%';
+
+      /* Update counter */
+      stepCounter.textContent = String(step + 1).padStart(2, '0') + ' / 07';
+    }
+
+    /* Scroll handler — desktop only */
+    window.addEventListener('scroll', () => {
+      if (isMobile() || !processWrapper) return;
+      const rect     = processWrapper.getBoundingClientRect();
+      const scrolled = -rect.top;
+      const total    = rect.height - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, scrolled / total));
+      const step     = Math.min(TOTAL_STEPS - 1, Math.floor(progress * TOTAL_STEPS));
+      goToStep(step);
+    }, { passive: true });
+
+    /* Click on tab — desktop: scroll to step; mobile: expand */
+    processTabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        if (isMobile()) {
+          goToStep(i);
+          return;
+        }
+        const wrapper   = document.querySelector('.process-scroll-wrapper');
+        const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
+        const total     = wrapper.offsetHeight - window.innerHeight;
+        const targetScroll = wrapperTop + (i / TOTAL_STEPS) * total;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      });
+    });
+
+    /* Init */
+    goToStep(0);
+
+    /* Language switcher */
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('.lang-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
