@@ -347,6 +347,15 @@
       pointer-events: none;
     }
 
+    @media (max-width: 768px) {
+      #frameCanvas {
+        width: 80% !important;
+        height: 80% !important;
+        left: 10% !important;
+        top: 10% !important;
+      }
+    }
+
     .scroll-hint {
       position: absolute;
       bottom: 32px;
@@ -1182,8 +1191,12 @@
       let dw, dh, dx, dy;
       if (cr > ir) { dw = cw; dh = cw / ir; } else { dh = ch; dw = ch * ir; }
       dx = (cw - dw) / 2; dy = (ch - dh) / 2;
+      const isMobile = window.innerWidth <= 768;
+      const scale = isMobile ? 0.8 : 1;
+      const offsetX = (cw - dw * scale) / 2;
+      const offsetY = (ch - dh * scale) / 2;
       ctx.clearRect(0, 0, cw, ch);
-      ctx.drawImage(img, dx, dy, dw, dh);
+      ctx.drawImage(img, offsetX, offsetY, dw * scale, dh * scale);
     }
 
     function dismissLoader() {
