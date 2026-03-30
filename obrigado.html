@@ -140,10 +140,10 @@
         PetLab
       </a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="como-funciona.html">Como Funciona</a>
-        <a href="para-marcas.html">Para Marcas</a>
-        <a href="fabricantes.html">Fabricantes</a>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="como-funciona.html" data-i18n="nav.como-funciona">Como Funciona</a>
+        <a href="para-marcas.html" data-i18n="nav.para-marcas">Para Marcas</a>
+        <a href="fabricantes.html" data-i18n="nav.fabricantes">Fabricantes</a>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="pt">PT</button>
           <span class="lang-divider">|</span>
@@ -151,7 +151,7 @@
           <span class="lang-divider">|</span>
           <button class="lang-btn" data-lang="en">EN</button>
         </div>
-        <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+        <a href="comece-agora.html" class="nav-cta" data-i18n="nav.cta">Iniciar Projeto →</a>
       </div>
       <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -167,12 +167,12 @@
       <span class="lang-divider">|</span>
       <button class="lang-btn" data-lang="en">EN</button>
     </div>
-    <a href="index.html">Home</a>
-    <a href="como-funciona.html">Como Funciona</a>
-    <a href="para-marcas.html">Para Marcas</a>
-    <a href="fabricantes.html">Fabricantes</a>
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="como-funciona.html" data-i18n="nav.como-funciona">Como Funciona</a>
+    <a href="para-marcas.html" data-i18n="nav.para-marcas">Para Marcas</a>
+    <a href="fabricantes.html" data-i18n="nav.fabricantes">Fabricantes</a>
     <a href="sobre.html">Sobre</a>
-    <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+    <a href="comece-agora.html" class="nav-cta" data-i18n="nav.cta">Iniciar Projeto →</a>
   </div>
 
   <section id="obrigado-section">
@@ -183,29 +183,29 @@
         <i class="ph-light ph-check-fat"></i>
       </div>
 
-      <h1>Recebemos o seu projeto!</h1>
-      <p>
+      <h1 data-i18n="ob.h1">Recebemos o seu projeto!</h1>
+      <p data-i18n="ob.p">
         Nossa equipe vai analisar as informações e entrar em contato em até 24 horas
         pelo e-mail ou WhatsApp que você informou.
       </p>
 
       <div class="next-steps-card">
-        <h3>O que acontece agora?</h3>
+        <h3 data-i18n="ob.next.badge">O que acontece agora?</h3>
         <div class="next-step-item">
           <div class="step-dot">1</div>
-          <p><strong>Análise do briefing (24h)</strong><br />Revisamos seu projeto e preparamos as perguntas certas.</p>
+          <p><strong data-i18n="ob.step.1.strong">Análise do briefing (24h)</strong><br /><span data-i18n="ob.step.1.p">Revisamos seu projeto e preparamos as perguntas certas.</span></p>
         </div>
         <div class="next-step-item">
           <div class="step-dot">2</div>
-          <p><strong>Apresentação de fabricantes pré-qualificados</strong><br />Selecionamos os mais adequados para a sua categoria.</p>
+          <p><strong data-i18n="ob.step.2.strong">Apresentação de fabricantes pré-qualificados</strong><br /><span data-i18n="ob.step.2.p">Selecionamos os mais adequados para a sua categoria.</span></p>
         </div>
         <div class="next-step-item">
           <div class="step-dot">3</div>
-          <p><strong>Proposta de cronograma</strong><br />Definimos os marcos do projeto com datas claras.</p>
+          <p><strong data-i18n="ob.step.3.strong">Proposta de cronograma</strong><br /><span data-i18n="ob.step.3.p">Definimos os marcos do projeto com datas claras.</span></p>
         </div>
       </div>
 
-      <a href="como-funciona.html" class="btn-secondary">Enquanto isso, conheça o processo →</a>
+      <a href="como-funciona.html" class="btn-secondary" data-i18n="ob.link">Enquanto isso, conheça o processo →</a>
     </div>
   </section>
 
@@ -214,9 +214,9 @@
     <div class="footer-inner">
       <div class="footer-brand"><img src="logo.png" alt="PetLab" loading="lazy" />PetLab</div>
       <nav class="footer-links">
-        <a href="como-funciona.html">Como Funciona</a>
-        <a href="para-marcas.html">Para Marcas</a>
-        <a href="fabricantes.html">Fabricantes</a>
+        <a href="como-funciona.html" data-i18n="nav.como-funciona">Como Funciona</a>
+        <a href="para-marcas.html" data-i18n="nav.para-marcas">Para Marcas</a>
+        <a href="fabricantes.html" data-i18n="nav.fabricantes">Fabricantes</a>
         <a href="comece-agora.html">Comece Agora</a>
         <a href="sobre.html">Sobre</a>
       </nav>
@@ -227,7 +227,7 @@
         <span class="lang-divider">|</span>
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
-      <p class="footer-copy">© 2026 PetLab. Todos os direitos reservados.</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 PetLab. Todos os direitos reservados.</p>
     </div>
   </footer>
 
@@ -240,15 +240,85 @@
     const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('nav-scrolled',window.scrollY>80);},{passive:true});
     const hamburger=document.getElementById('navHamburger'),panel=document.getElementById('navMobilePanel'),overlay=document.getElementById('navOverlay');hamburger.addEventListener('click',()=>{const open=panel.classList.toggle('open');overlay.classList.toggle('open',open);hamburger.setAttribute('aria-expanded',open);});overlay.addEventListener('click',()=>{panel.classList.remove('open');overlay.classList.remove('open');hamburger.setAttribute('aria-expanded',false);});
 
-    /* Language switcher */
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        document.querySelectorAll('.lang-btn').forEach(b => {
-          b.classList.toggle('active', b.dataset.lang === lang);
-        });
+    const translations = {
+      pt: {
+        'nav.home': 'Home',
+        'nav.como-funciona': 'Como Funciona',
+        'nav.para-marcas': 'Para Marcas',
+        'nav.fabricantes': 'Fabricantes',
+        'nav.cta': 'Iniciar Projeto →',
+        'footer.copy': '© 2026 PetLab. Todos os direitos reservados.',
+        'ob.h1': 'Recebemos o seu projeto!',
+        'ob.p': 'Nossa equipe vai analisar as informações e entrar em contato em até 24 horas pelo e-mail ou WhatsApp que você informou.',
+        'ob.next.badge': 'O que acontece agora?',
+        'ob.step.1.strong': 'Análise do briefing (24h)',
+        'ob.step.1.p': 'Revisamos seu projeto e preparamos as perguntas certas.',
+        'ob.step.2.strong': 'Apresentação de fabricantes pré-qualificados',
+        'ob.step.2.p': 'Selecionamos os mais adequados para a sua categoria.',
+        'ob.step.3.strong': 'Proposta de cronograma',
+        'ob.step.3.p': 'Definimos os marcos do projeto com datas claras.',
+        'ob.link': 'Enquanto isso, conheça o processo →'
+      },
+      es: {
+        'nav.home': 'Inicio',
+        'nav.como-funciona': 'Cómo Funciona',
+        'nav.para-marcas': 'Para Marcas',
+        'nav.fabricantes': 'Fabricantes',
+        'nav.cta': 'Iniciar Proyecto →',
+        'footer.copy': '© 2026 PetLab. Todos los derechos reservados.',
+        'ob.h1': '¡Recibimos tu proyecto!',
+        'ob.p': 'Nuestro equipo analizará la información y se pondrá en contacto en hasta 24 horas por el correo o WhatsApp que nos indicaste.',
+        'ob.next.badge': '¿Qué pasa ahora?',
+        'ob.step.1.strong': 'Análisis del briefing (24h)',
+        'ob.step.1.p': 'Revisamos tu proyecto y preparamos las preguntas correctas.',
+        'ob.step.2.strong': 'Presentación de fabricantes precalificados',
+        'ob.step.2.p': 'Seleccionamos los más adecuados para tu categoría.',
+        'ob.step.3.strong': 'Propuesta de cronograma',
+        'ob.step.3.p': 'Definimos los hitos del proyecto con fechas claras.',
+        'ob.link': 'Mientras tanto, conoce el proceso →'
+      },
+      en: {
+        'nav.home': 'Home',
+        'nav.como-funciona': 'How It Works',
+        'nav.para-marcas': 'For Brands',
+        'nav.fabricantes': 'Manufacturers',
+        'nav.cta': 'Start Project →',
+        'footer.copy': '© 2026 PetLab. All rights reserved.',
+        'ob.h1': 'We received your project!',
+        'ob.p': 'Our team will review the information and get in touch within 24 hours by the email or WhatsApp you provided.',
+        'ob.next.badge': 'What happens now?',
+        'ob.step.1.strong': 'Briefing analysis (24h)',
+        'ob.step.1.p': 'We review your project and prepare the right questions.',
+        'ob.step.2.strong': 'Presentation of pre-qualified manufacturers',
+        'ob.step.2.p': 'We select the most suitable ones for your category.',
+        'ob.step.3.strong': 'Schedule proposal',
+        'ob.step.3.p': 'We define project milestones with clear dates.',
+        'ob.link': 'In the meantime, learn about the process →'
+      }
+    };
+
+    let currentLang = 'pt';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('petlab-lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key] !== undefined) {
+          el.innerHTML = translations[lang][key];
+        }
       });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
+
+    const savedLang = localStorage.getItem('petlab-lang') || 'pt';
+    setLanguage(savedLang);
   </script>
 </body>
 </html>

@@ -315,10 +315,10 @@
         PetLab
       </a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="como-funciona.html">Como Funciona</a>
-        <a href="para-marcas.html">Para Marcas</a>
-        <a href="fabricantes.html">Fabricantes</a>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="como-funciona.html" data-i18n="nav.como-funciona">Como Funciona</a>
+        <a href="para-marcas.html" data-i18n="nav.para-marcas">Para Marcas</a>
+        <a href="fabricantes.html" data-i18n="nav.fabricantes">Fabricantes</a>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="pt">PT</button>
           <span class="lang-divider">|</span>
@@ -326,7 +326,7 @@
           <span class="lang-divider">|</span>
           <button class="lang-btn" data-lang="en">EN</button>
         </div>
-        <a href="comece-agora.html" class="nav-cta" style="background:rgba(82,201,138,0.2);">Iniciar Projeto →</a>
+        <a href="comece-agora.html" class="nav-cta" style="background:rgba(82,201,138,0.2);" data-i18n="nav.cta">Iniciar Projeto →</a>
       </div>
       <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -342,12 +342,12 @@
       <span class="lang-divider">|</span>
       <button class="lang-btn" data-lang="en">EN</button>
     </div>
-    <a href="index.html">Home</a>
-    <a href="como-funciona.html">Como Funciona</a>
-    <a href="para-marcas.html">Para Marcas</a>
-    <a href="fabricantes.html">Fabricantes</a>
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="como-funciona.html" data-i18n="nav.como-funciona">Como Funciona</a>
+    <a href="para-marcas.html" data-i18n="nav.para-marcas">Para Marcas</a>
+    <a href="fabricantes.html" data-i18n="nav.fabricantes">Fabricantes</a>
     <a href="sobre.html">Sobre</a>
-    <a href="comece-agora.html" class="nav-cta">Iniciar Projeto →</a>
+    <a href="comece-agora.html" class="nav-cta" data-i18n="nav.cta">Iniciar Projeto →</a>
   </div>
 
   <section id="form-section">
@@ -357,17 +357,17 @@
     <div class="form-wrapper">
       <!-- Hero copy -->
       <div class="form-header">
-        <div class="badge-tag">Consulta Gratuita</div>
-        <h2>Conta pra gente<br />o que você quer criar.</h2>
-        <p>A consulta inicial é gratuita. Respondemos em até 24 horas.</p>
+        <div class="badge-tag" data-i18n="ca.badge">Consulta Gratuita</div>
+        <h2 data-i18n="ca.h2">Conta pra gente<br />o que você quer criar.</h2>
+        <p data-i18n="ca.subtitle">A consulta inicial é gratuita. Respondemos em até 24 horas.</p>
       </div>
 
       <!-- Progress -->
       <div class="form-progress-wrap">
         <div class="form-progress-steps">
-          <span class="form-step-label active-label" id="label-1">Sobre você</span>
-          <span class="form-step-label" id="label-2">Sobre o projeto</span>
-          <span class="form-step-label" id="label-3">Última pergunta</span>
+          <span class="form-step-label active-label" id="label-1" data-i18n="ca.step1.label">Sobre você</span>
+          <span class="form-step-label" id="label-2" data-i18n="ca.step2.label">Sobre o projeto</span>
+          <span class="form-step-label" id="label-3" data-i18n="ca.step3.label">Última pergunta</span>
         </div>
         <div class="form-progress-track">
           <div class="form-progress-fill" id="progressFill" style="width:33%"></div>
@@ -381,104 +381,104 @@
           <!-- STEP 1 -->
           <div class="form-step active" id="step-1">
             <div class="field-group" id="fg-nome">
-              <label for="nome">Nome completo</label>
+              <label for="nome" data-i18n="ca.label.nome">Nome completo</label>
               <input type="text" id="nome" name="nome" placeholder="Seu nome" autocomplete="name" />
-              <span class="field-error">Por favor, informe seu nome completo.</span>
+              <span class="field-error" data-i18n="ca.err.nome">Por favor, informe seu nome completo.</span>
             </div>
             <div class="field-group" id="fg-email">
-              <label for="email">E-mail</label>
+              <label for="email" data-i18n="ca.label.email">E-mail</label>
               <input type="email" id="email" name="email" placeholder="seu@email.com" autocomplete="email" />
-              <span class="field-error">Por favor, informe um e-mail válido.</span>
+              <span class="field-error" data-i18n="ca.err.email">Por favor, informe um e-mail válido.</span>
             </div>
             <div class="field-group" id="fg-whatsapp">
-              <label for="whatsapp">WhatsApp com DDD</label>
+              <label for="whatsapp" data-i18n="ca.label.whatsapp">WhatsApp com DDD</label>
               <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" autocomplete="tel" />
-              <span class="field-error">Por favor, informe seu WhatsApp com DDD.</span>
+              <span class="field-error" data-i18n="ca.err.whatsapp">Por favor, informe seu WhatsApp com DDD.</span>
             </div>
             <div class="field-group">
-              <label for="empresa">Empresa / Marca <span class="optional">(opcional)</span></label>
+              <label for="empresa" data-i18n="ca.label.empresa">Empresa / Marca <span class="optional">(opcional)</span></label>
               <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa ou marca" autocomplete="organization" />
             </div>
             <div class="form-actions">
-              <button type="button" class="btn-primary" id="btn-step1">Continuar →</button>
+              <button type="button" class="btn-primary" id="btn-step1" data-i18n="ca.btn.continuar">Continuar →</button>
             </div>
           </div>
 
           <!-- STEP 2 -->
           <div class="form-step" id="step-2">
             <div class="field-group" id="fg-categoria">
-              <label for="categoria">Categoria do produto</label>
+              <label for="categoria" data-i18n="ca.label.categoria">Categoria do produto</label>
               <select id="categoria" name="categoria">
-                <option value="" disabled selected>Selecione uma categoria</option>
-                <option value="suplementos">Suplementos</option>
-                <option value="alimentacao">Alimentação</option>
-                <option value="higiene">Higiene</option>
-                <option value="acessorios">Acessórios</option>
-                <option value="outro">Outro</option>
+                <option value="" disabled selected data-i18n="ca.opt.categoria.default">Selecione uma categoria</option>
+                <option value="suplementos" data-i18n="ca.opt.suplementos">Suplementos</option>
+                <option value="alimentacao" data-i18n="ca.opt.alimentacao">Alimentação</option>
+                <option value="higiene" data-i18n="ca.opt.higiene">Higiene</option>
+                <option value="acessorios" data-i18n="ca.opt.acessorios">Acessórios</option>
+                <option value="outro" data-i18n="ca.opt.outro">Outro</option>
               </select>
-              <span class="field-error">Por favor, selecione uma categoria.</span>
+              <span class="field-error" data-i18n="ca.err.categoria">Por favor, selecione uma categoria.</span>
             </div>
             <div class="field-group" id="fg-descricao">
-              <label for="descricao">Descreva o produto que você quer criar</label>
+              <label for="descricao" data-i18n="ca.label.descricao">Descreva o produto que você quer criar</label>
               <textarea id="descricao" name="descricao" placeholder="Ex: um suplemento articular para cães de médio porte, com ômega 3..."></textarea>
-              <span class="field-error">Por favor, descreva o produto que você quer criar.</span>
+              <span class="field-error" data-i18n="ca.err.descricao">Por favor, descreva o produto que você quer criar.</span>
             </div>
             <div class="field-group" id="fg-volume">
-              <label for="volume">Volume inicial estimado</label>
+              <label for="volume" data-i18n="ca.label.volume">Volume inicial estimado</label>
               <select id="volume" name="volume">
-                <option value="" disabled selected>Selecione um volume</option>
-                <option value="menos500">Menos de 500 unidades</option>
-                <option value="500-2000">500 – 2.000 unidades</option>
-                <option value="mais2000">Mais de 2.000 unidades</option>
-                <option value="naosei">Não sei ainda</option>
+                <option value="" disabled selected data-i18n="ca.opt.volume.default">Selecione um volume</option>
+                <option value="menos500" data-i18n="ca.opt.menos500">Menos de 500 unidades</option>
+                <option value="500-2000" data-i18n="ca.opt.500-2000">500 – 2.000 unidades</option>
+                <option value="mais2000" data-i18n="ca.opt.mais2000">Mais de 2.000 unidades</option>
+                <option value="naosei" data-i18n="ca.opt.naosei">Não sei ainda</option>
               </select>
-              <span class="field-error">Por favor, selecione um volume estimado.</span>
+              <span class="field-error" data-i18n="ca.err.volume">Por favor, selecione um volume estimado.</span>
             </div>
             <div class="field-group">
-              <label>Tem embalagem ou identidade visual?</label>
+              <label data-i18n="ca.label.embalagem">Tem embalagem ou identidade visual?</label>
               <div class="radio-group" id="fg-embalagem">
                 <div class="radio-option">
                   <input type="radio" id="emb-sim" name="embalagem" value="sim" />
-                  <label for="emb-sim">Sim</label>
+                  <label for="emb-sim" data-i18n="ca.opt.sim">Sim</label>
                 </div>
                 <div class="radio-option">
                   <input type="radio" id="emb-nao" name="embalagem" value="nao" />
-                  <label for="emb-nao">Não</label>
+                  <label for="emb-nao" data-i18n="ca.opt.nao">Não</label>
                 </div>
                 <div class="radio-option">
                   <input type="radio" id="emb-dev" name="embalagem" value="em-desenvolvimento" />
-                  <label for="emb-dev">Em desenvolvimento</label>
+                  <label for="emb-dev" data-i18n="ca.opt.em-desenvolvimento">Em desenvolvimento</label>
                 </div>
               </div>
             </div>
             <div class="form-actions">
-              <button type="button" class="btn-ghost" id="btn-back1">← Voltar</button>
-              <button type="button" class="btn-primary" id="btn-step2">Continuar →</button>
+              <button type="button" class="btn-ghost" id="btn-back1" data-i18n="ca.btn.voltar">← Voltar</button>
+              <button type="button" class="btn-primary" id="btn-step2" data-i18n="ca.btn.continuar">Continuar →</button>
             </div>
           </div>
 
           <!-- STEP 3 -->
           <div class="form-step" id="step-3">
             <div class="field-group" id="fg-origem">
-              <label for="origem">Como nos encontrou?</label>
+              <label for="origem" data-i18n="ca.label.origem">Como nos encontrou?</label>
               <select id="origem" name="origem">
-                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="" disabled selected data-i18n="ca.opt.origem.default">Selecione uma opção</option>
                 <option value="linkedin">LinkedIn</option>
                 <option value="instagram">Instagram</option>
-                <option value="indicacao">Indicação</option>
+                <option value="indicacao" data-i18n="ca.opt.indicacao">Indicação</option>
                 <option value="google">Google</option>
-                <option value="feira">Feira</option>
-                <option value="outro">Outro</option>
+                <option value="feira" data-i18n="ca.opt.feira">Feira</option>
+                <option value="outro" data-i18n="ca.opt.outro">Outro</option>
               </select>
-              <span class="field-error">Por favor, selecione como nos encontrou.</span>
+              <span class="field-error" data-i18n="ca.err.origem">Por favor, selecione como nos encontrou.</span>
             </div>
             <div class="field-group">
-              <label for="comentario">Alguma dúvida ou comentário? <span class="optional">(opcional)</span></label>
+              <label for="comentario" data-i18n="ca.label.comentario">Alguma dúvida ou comentário? <span class="optional">(opcional)</span></label>
               <textarea id="comentario" name="comentario" placeholder="Fique à vontade para contar mais sobre o seu projeto..." style="min-height:120px;"></textarea>
             </div>
             <div class="form-actions">
-              <button type="button" class="btn-ghost" id="btn-back2">← Voltar</button>
-              <button type="submit" class="btn-primary" id="btn-submit">Enviar Projeto →</button>
+              <button type="button" class="btn-ghost" id="btn-back2" data-i18n="ca.btn.voltar">← Voltar</button>
+              <button type="submit" class="btn-primary" id="btn-submit" data-i18n="ca.btn.submit">Enviar Projeto →</button>
             </div>
           </div>
 
@@ -497,9 +497,9 @@
     <div class="footer-inner">
       <div class="footer-brand"><img src="logo.png" alt="PetLab" loading="lazy" />PetLab</div>
       <nav class="footer-links">
-        <a href="como-funciona.html">Como Funciona</a>
-        <a href="para-marcas.html">Para Marcas</a>
-        <a href="fabricantes.html">Fabricantes</a>
+        <a href="como-funciona.html" data-i18n="nav.como-funciona">Como Funciona</a>
+        <a href="para-marcas.html" data-i18n="nav.para-marcas">Para Marcas</a>
+        <a href="fabricantes.html" data-i18n="nav.fabricantes">Fabricantes</a>
         <a href="comece-agora.html">Comece Agora</a>
         <a href="sobre.html">Sobre</a>
       </nav>
@@ -510,7 +510,7 @@
         <span class="lang-divider">|</span>
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
-      <p class="footer-copy">© 2026 PetLab. Todos os direitos reservados.</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 PetLab. Todos os direitos reservados.</p>
     </div>
   </footer>
 
@@ -615,15 +615,184 @@
       this.value = v;
     });
 
-    /* Language switcher */
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        document.querySelectorAll('.lang-btn').forEach(b => {
-          b.classList.toggle('active', b.dataset.lang === lang);
-        });
+    const translations = {
+      pt: {
+        'nav.home': 'Home',
+        'nav.como-funciona': 'Como Funciona',
+        'nav.para-marcas': 'Para Marcas',
+        'nav.fabricantes': 'Fabricantes',
+        'nav.cta': 'Iniciar Projeto →',
+        'footer.copy': '© 2026 PetLab. Todos os direitos reservados.',
+        'ca.badge': 'Consulta Gratuita',
+        'ca.h2': 'Conta pra gente<br />o que você quer criar.',
+        'ca.subtitle': 'A consulta inicial é gratuita. Respondemos em até 24 horas.',
+        'ca.step1.label': 'Sobre você',
+        'ca.step2.label': 'Sobre o projeto',
+        'ca.step3.label': 'Última pergunta',
+        'ca.label.nome': 'Nome completo',
+        'ca.label.email': 'E-mail',
+        'ca.label.whatsapp': 'WhatsApp com DDD',
+        'ca.label.empresa': 'Empresa / Marca <span class="optional">(opcional)</span>',
+        'ca.label.categoria': 'Categoria do produto',
+        'ca.label.descricao': 'Descreva o produto que você quer criar',
+        'ca.label.volume': 'Volume inicial estimado',
+        'ca.label.embalagem': 'Tem embalagem ou identidade visual?',
+        'ca.label.origem': 'Como nos encontrou?',
+        'ca.label.comentario': 'Alguma dúvida ou comentário? <span class="optional">(opcional)</span>',
+        'ca.opt.categoria.default': 'Selecione uma categoria',
+        'ca.opt.suplementos': 'Suplementos',
+        'ca.opt.alimentacao': 'Alimentação',
+        'ca.opt.higiene': 'Higiene',
+        'ca.opt.acessorios': 'Acessórios',
+        'ca.opt.outro': 'Outro',
+        'ca.opt.volume.default': 'Selecione um volume',
+        'ca.opt.menos500': 'Menos de 500 unidades',
+        'ca.opt.500-2000': '500 – 2.000 unidades',
+        'ca.opt.mais2000': 'Mais de 2.000 unidades',
+        'ca.opt.naosei': 'Não sei ainda',
+        'ca.opt.sim': 'Sim',
+        'ca.opt.nao': 'Não',
+        'ca.opt.em-desenvolvimento': 'Em desenvolvimento',
+        'ca.opt.origem.default': 'Selecione uma opção',
+        'ca.opt.indicacao': 'Indicação',
+        'ca.opt.feira': 'Feira',
+        'ca.err.nome': 'Por favor, informe seu nome completo.',
+        'ca.err.email': 'Por favor, informe um e-mail válido.',
+        'ca.err.whatsapp': 'Por favor, informe seu WhatsApp com DDD.',
+        'ca.err.categoria': 'Por favor, selecione uma categoria.',
+        'ca.err.descricao': 'Por favor, descreva o produto que você quer criar.',
+        'ca.err.volume': 'Por favor, selecione um volume estimado.',
+        'ca.err.origem': 'Por favor, selecione como nos encontrou.',
+        'ca.btn.continuar': 'Continuar →',
+        'ca.btn.voltar': '← Voltar',
+        'ca.btn.submit': 'Enviar Projeto →'
+      },
+      es: {
+        'nav.home': 'Inicio',
+        'nav.como-funciona': 'Cómo Funciona',
+        'nav.para-marcas': 'Para Marcas',
+        'nav.fabricantes': 'Fabricantes',
+        'nav.cta': 'Iniciar Proyecto →',
+        'footer.copy': '© 2026 PetLab. Todos los derechos reservados.',
+        'ca.badge': 'Consulta Gratuita',
+        'ca.h2': 'Cuéntanos<br />qué quieres crear.',
+        'ca.subtitle': 'La consulta inicial es gratuita. Respondemos en hasta 24 horas.',
+        'ca.step1.label': 'Sobre ti',
+        'ca.step2.label': 'Sobre el proyecto',
+        'ca.step3.label': 'Última pregunta',
+        'ca.label.nome': 'Nombre completo',
+        'ca.label.email': 'E-mail',
+        'ca.label.whatsapp': 'WhatsApp con código de área',
+        'ca.label.empresa': 'Empresa / Marca <span class="optional">(opcional)</span>',
+        'ca.label.categoria': 'Categoría del producto',
+        'ca.label.descricao': 'Describe el producto que quieres crear',
+        'ca.label.volume': 'Volumen inicial estimado',
+        'ca.label.embalagem': '¿Tienes embalaje o identidad visual?',
+        'ca.label.origem': '¿Cómo nos encontraste?',
+        'ca.label.comentario': '¿Alguna duda o comentario? <span class="optional">(opcional)</span>',
+        'ca.opt.categoria.default': 'Selecciona una categoría',
+        'ca.opt.suplementos': 'Suplementos',
+        'ca.opt.alimentacao': 'Alimentación',
+        'ca.opt.higiene': 'Higiene',
+        'ca.opt.acessorios': 'Accesorios',
+        'ca.opt.outro': 'Otro',
+        'ca.opt.volume.default': 'Selecciona un volumen',
+        'ca.opt.menos500': 'Menos de 500 unidades',
+        'ca.opt.500-2000': '500 – 2.000 unidades',
+        'ca.opt.mais2000': 'Más de 2.000 unidades',
+        'ca.opt.naosei': 'No lo sé aún',
+        'ca.opt.sim': 'Sí',
+        'ca.opt.nao': 'No',
+        'ca.opt.em-desenvolvimento': 'En desarrollo',
+        'ca.opt.origem.default': 'Selecciona una opción',
+        'ca.opt.indicacao': 'Referido',
+        'ca.opt.feira': 'Feria',
+        'ca.err.nome': 'Por favor, ingresa tu nombre completo.',
+        'ca.err.email': 'Por favor, ingresa un e-mail válido.',
+        'ca.err.whatsapp': 'Por favor, ingresa tu WhatsApp con código de área.',
+        'ca.err.categoria': 'Por favor, selecciona una categoría.',
+        'ca.err.descricao': 'Por favor, describe el producto que quieres crear.',
+        'ca.err.volume': 'Por favor, selecciona un volumen estimado.',
+        'ca.err.origem': 'Por favor, selecciona cómo nos encontraste.',
+        'ca.btn.continuar': 'Continuar →',
+        'ca.btn.voltar': '← Volver',
+        'ca.btn.submit': 'Enviar Proyecto →'
+      },
+      en: {
+        'nav.home': 'Home',
+        'nav.como-funciona': 'How It Works',
+        'nav.para-marcas': 'For Brands',
+        'nav.fabricantes': 'Manufacturers',
+        'nav.cta': 'Start Project →',
+        'footer.copy': '© 2026 PetLab. All rights reserved.',
+        'ca.badge': 'Free Consultation',
+        'ca.h2': 'Tell us<br />what you want to create.',
+        'ca.subtitle': 'The initial consultation is free. We respond within 24 hours.',
+        'ca.step1.label': 'About you',
+        'ca.step2.label': 'About the project',
+        'ca.step3.label': 'Last question',
+        'ca.label.nome': 'Full name',
+        'ca.label.email': 'E-mail',
+        'ca.label.whatsapp': 'WhatsApp with area code',
+        'ca.label.empresa': 'Company / Brand <span class="optional">(optional)</span>',
+        'ca.label.categoria': 'Product category',
+        'ca.label.descricao': 'Describe the product you want to create',
+        'ca.label.volume': 'Estimated initial volume',
+        'ca.label.embalagem': 'Do you have packaging or visual identity?',
+        'ca.label.origem': 'How did you find us?',
+        'ca.label.comentario': 'Any question or comment? <span class="optional">(optional)</span>',
+        'ca.opt.categoria.default': 'Select a category',
+        'ca.opt.suplementos': 'Supplements',
+        'ca.opt.alimentacao': 'Food',
+        'ca.opt.higiene': 'Hygiene',
+        'ca.opt.acessorios': 'Accessories',
+        'ca.opt.outro': 'Other',
+        'ca.opt.volume.default': 'Select a volume',
+        'ca.opt.menos500': 'Less than 500 units',
+        'ca.opt.500-2000': '500 – 2,000 units',
+        'ca.opt.mais2000': 'More than 2,000 units',
+        'ca.opt.naosei': 'I don\'t know yet',
+        'ca.opt.sim': 'Yes',
+        'ca.opt.nao': 'No',
+        'ca.opt.em-desenvolvimento': 'In development',
+        'ca.opt.origem.default': 'Select an option',
+        'ca.opt.indicacao': 'Referral',
+        'ca.opt.feira': 'Trade show',
+        'ca.err.nome': 'Please provide your full name.',
+        'ca.err.email': 'Please provide a valid e-mail.',
+        'ca.err.whatsapp': 'Please provide your WhatsApp with area code.',
+        'ca.err.categoria': 'Please select a category.',
+        'ca.err.descricao': 'Please describe the product you want to create.',
+        'ca.err.volume': 'Please select an estimated volume.',
+        'ca.err.origem': 'Please select how you found us.',
+        'ca.btn.continuar': 'Continue →',
+        'ca.btn.voltar': '← Back',
+        'ca.btn.submit': 'Send Project →'
+      }
+    };
+
+    let currentLang = 'pt';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('petlab-lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key] !== undefined) {
+          el.innerHTML = translations[lang][key];
+        }
       });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
+
+    const savedLang = localStorage.getItem('petlab-lang') || 'pt';
+    setLanguage(savedLang);
   </script>
 </body>
 </html>
