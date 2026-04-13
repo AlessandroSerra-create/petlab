@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Comece Agora — PetLab</title>
-  <meta name="description" content="Inicie seu projeto pet em private label. Preencha o formulário e receba nossa resposta em até 24 horas. Consulta inicial gratuita." />
+  <meta name="description" content="Fale com a PetLab pelo WhatsApp. Desenvolva produtos pet em private label ou cadastre-se como fornecedor." />
   <meta property="og:title" content="Comece Agora — PetLab" />
-  <meta property="og:description" content="Conta pra gente o que você quer criar. A consulta inicial é gratuita." />
+  <meta property="og:description" content="Fale com a PetLab pelo WhatsApp. Desenvolva produtos ou cadastre-se como fornecedor." />
   <meta property="og:image" content="og-image.jpg" />
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/png" href="logo.png" />
@@ -18,288 +18,135 @@
   <link rel="stylesheet" href="style-shared.css" />
 
   <style>
-    /* =====================================================
-       FORM PAGE
-       ===================================================== */
-    #form-section {
-      min-height: 100vh;
-      padding: 160px 32px 120px;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-    }
-
-    .form-wrapper {
-      width: 100%;
-      max-width: 640px;
-    }
-
-    /* Progress bar */
-    .form-progress-wrap {
-      margin-bottom: 40px;
-    }
-
-    .form-progress-steps {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .form-step-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-    }
-
-    .form-step-label.active-label {
-      color: var(--accent-dark);
-    }
-
-    .form-progress-track {
-      height: 3px;
-      background: rgba(13,43,31,0.1);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .form-progress-fill {
-      height: 100%;
-      background: var(--accent-dark);
-      border-radius: 2px;
-      transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
-    }
-
-    /* Form header */
-    .form-header {
-      margin-bottom: 36px;
-    }
-
-    .form-header h2 {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .form-header p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    /* Form card */
-    .form-card {
+    #cta-choice {
+      padding: 80px 32px 120px;
       background: #FFFFFF;
+    }
+
+    .choice-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .choice-card {
+      background: #F4F8F6;
       border: 1px solid rgba(13,43,31,0.08);
       border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 4px 32px rgba(13,43,31,0.06);
-    }
-
-    /* Step panels */
-    .form-step {
-      display: none;
-    }
-
-    .form-step.active {
-      display: block;
-    }
-
-    /* Field styles */
-    .field-group {
-      margin-bottom: 24px;
-    }
-
-    .field-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .field-group input,
-    .field-group select,
-    .field-group textarea {
-      width: 100%;
-      background: #FAFAFA;
-      border: 1px solid rgba(13,43,31,0.12);
-      border-radius: 12px;
-      padding: 14px 18px;
-      font-family: 'Inter', sans-serif;
-      font-size: 16px; /* min 16px — prevent iOS zoom */
-      color: var(--text-primary);
-      outline: none;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-
-    .field-group select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%237A9E8E' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'%3E%3C/path%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 44px;
-      cursor: pointer;
-    }
-
-    .field-group select option {
-      background: #FFFFFF;
-      color: var(--text-primary);
-    }
-
-    .field-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .field-group input:focus,
-    .field-group select:focus,
-    .field-group textarea:focus {
-      border-color: var(--accent-dark);
-      box-shadow: 0 0 0 3px rgba(13,43,31,0.06);
-      background: #FFFFFF;
-    }
-
-    .field-group input::placeholder,
-    .field-group textarea::placeholder {
-      color: rgba(122,158,142,0.5);
-    }
-
-    .field-group .optional {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      opacity: 0.6;
-      margin-left: 6px;
-      text-transform: lowercase;
-      letter-spacing: 0;
-    }
-
-    /* Radio group */
-    .radio-group {
+      padding: 48px 40px;
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .choice-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(13,43,31,0.1);
+      border-color: rgba(82,201,138,0.3);
     }
 
-    .radio-option {
-      flex: 1;
-      min-width: 100px;
-    }
-
-    .radio-option input[type="radio"] {
-      display: none;
-    }
-
-    .radio-option label {
+    .choice-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(82,201,138,0.1);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 16px;
-      border: 1px solid rgba(13,43,31,0.12);
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: all 0.25s ease;
+      color: #52C98A;
+      font-size: 28px;
+    }
+
+    .choice-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #52C98A;
+    }
+
+    .choice-card h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0D2B1F;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .choice-card p {
+      font-size: 0.95rem;
+      color: #4A7A62;
+      line-height: 1.65;
+      margin: 0;
+      flex: 1;
+    }
+
+    .btn-choice {
+      display: inline-block;
+      padding: 16px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
       text-align: center;
-      text-transform: none;
-      letter-spacing: 0;
-      margin-bottom: 0;
-      background: #FAFAFA;
+      transition: all 0.25s ease;
+      margin-top: 8px;
     }
 
-    .radio-option input[type="radio"]:checked + label {
-      border-color: var(--accent-dark);
-      background: rgba(13,43,31,0.05);
-      color: var(--text-primary);
-      box-shadow: 0 0 0 2px rgba(13,43,31,0.08);
+    .btn-brand {
+      background: #0D2B1F;
+      color: #FFFFFF;
+      border: 2px solid #0D2B1F;
+    }
+    .btn-brand:hover {
+      background: #1E5C3A;
+      border-color: #1E5C3A;
+      transform: translateY(-2px);
     }
 
-    .radio-option label:hover {
-      border-color: rgba(82,201,138,0.5);
-      color: var(--text-primary);
-      background: #FFFFFF;
+    .btn-supplier {
+      background: transparent;
+      color: #0D2B1F;
+      border: 2px solid rgba(13,43,31,0.25);
+    }
+    .btn-supplier:hover {
+      border-color: #0D2B1F;
+      background: rgba(13,43,31,0.04);
+      transform: translateY(-2px);
     }
 
-    /* Error messages */
-    .field-error {
-      display: none;
-      font-size: 0.78rem;
-      color: #ff6b6b;
-      margin-top: 6px;
-    }
-
-    .field-group.has-error input,
-    .field-group.has-error select,
-    .field-group.has-error textarea {
-      border-color: #ff6b6b;
-    }
-
-    .field-group.has-error .field-error {
-      display: block;
-    }
-
-    /* Step actions */
-    .form-actions {
+    .choice-divider {
       display: flex;
-      gap: 12px;
-      justify-content: flex-end;
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(13,43,31,0.08);
-    }
-
-    .form-actions .btn-primary {
-      min-width: 160px;
-    }
-
-    /* Sticky CTA mobile */
-    #sticky-cta {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
-      background: rgba(255,255,255,0.95);
-      border-top: 1px solid rgba(13,43,31,0.1);
-      backdrop-filter: blur(12px);
-      z-index: 500;
-    }
-
-    #sticky-cta .btn-primary {
-      width: 100%;
+      align-items: center;
       justify-content: center;
+      padding: 0 32px;
+    }
+    .choice-divider span {
+      font-size: 0.85rem;
+      color: #7A9E8E;
+      font-weight: 500;
+      background: #FFFFFF;
+      padding: 8px 12px;
+      border: 1px solid rgba(13,43,31,0.1);
+      border-radius: 100px;
     }
 
+    /* Mobile */
     @media (max-width: 768px) {
-      #form-section {
-        padding: 120px 20px 100px;
+      .choice-wrapper {
+        grid-template-columns: 1fr;
+        gap: 0;
       }
-
-      .form-card {
-        padding: 28px 24px;
+      .choice-divider {
+        padding: 24px 0;
       }
-
-      #sticky-cta {
-        display: block;
+      .choice-card {
+        padding: 36px 28px;
       }
-
-      .form-actions .btn-ghost {
-        display: none;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .radio-group { flex-direction: column; }
-      .radio-option { min-width: 100%; }
     }
   </style>
 </head>
@@ -350,147 +197,41 @@
     <a href="comece-agora.html" class="nav-cta" data-i18n="nav.cta">Iniciar Projeto →</a>
   </div>
 
-  <section id="form-section">
-    <div class="orb orb-accent" style="width:500px;height:500px;top:-200px;right:-150px;"></div>
-    <div class="orb orb-accent" style="width:300px;height:300px;bottom:-100px;left:-100px;opacity:0.07;"></div>
+  <section id="cta-choice">
+    <div class="choice-wrapper">
 
-    <div class="form-wrapper">
-      <!-- Hero copy -->
-      <div class="form-header">
-        <div class="badge-tag" data-i18n="ca.badge">Consulta Gratuita</div>
-        <h2 data-i18n="ca.h2">Conta pra gente<br />o que você quer criar.</h2>
-        <p data-i18n="ca.subtitle">A consulta inicial é gratuita. Respondemos em até 24 horas.</p>
+      <div class="choice-card">
+        <div class="choice-icon"><i class="ph-light ph-storefront"></i></div>
+        <div class="choice-label">SOU UMA MARCA</div>
+        <h2>Quero desenvolver produtos para a minha linha pet</h2>
+        <p>Encontramos o fabricante certo, gerenciamos a formulação
+        e entregamos sua amostra — em até 60 dias.
+        Só ganhamos quando você produz.</p>
+        <a href="https://wa.me/5541995259939?text=Ol%C3%A1%21%20Gostaria%20de%20desenvolver%20produtos%20para%20a%20minha%20linha%20pet%21%20Podemos%20conversar%3F"
+           target="_blank" class="btn-choice btn-brand">
+          💬 Falar com a PetLab →
+        </a>
       </div>
 
-      <!-- Progress -->
-      <div class="form-progress-wrap">
-        <div class="form-progress-steps">
-          <span class="form-step-label active-label" id="label-1" data-i18n="ca.step1.label">Sobre você</span>
-          <span class="form-step-label" id="label-2" data-i18n="ca.step2.label">Sobre o projeto</span>
-          <span class="form-step-label" id="label-3" data-i18n="ca.step3.label">Última pergunta</span>
-        </div>
-        <div class="form-progress-track">
-          <div class="form-progress-fill" id="progressFill" style="width:33%"></div>
-        </div>
+      <div class="choice-divider">
+        <span>ou</span>
       </div>
 
-      <!-- Form -->
-      <div class="form-card">
-        <form id="petlabForm" novalidate>
-
-          <!-- STEP 1 -->
-          <div class="form-step active" id="step-1">
-            <div class="field-group" id="fg-nome">
-              <label for="nome" data-i18n="ca.label.nome">Nome completo</label>
-              <input type="text" id="nome" name="nome" placeholder="Seu nome" autocomplete="name" />
-              <span class="field-error" data-i18n="ca.err.nome">Por favor, informe seu nome completo.</span>
-            </div>
-            <div class="field-group" id="fg-email">
-              <label for="email" data-i18n="ca.label.email">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="seu@email.com" autocomplete="email" />
-              <span class="field-error" data-i18n="ca.err.email">Por favor, informe um e-mail válido.</span>
-            </div>
-            <div class="field-group" id="fg-whatsapp">
-              <label for="whatsapp" data-i18n="ca.label.whatsapp">WhatsApp com DDD</label>
-              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" autocomplete="tel" />
-              <span class="field-error" data-i18n="ca.err.whatsapp">Por favor, informe seu WhatsApp com DDD.</span>
-            </div>
-            <div class="field-group">
-              <label for="empresa" data-i18n="ca.label.empresa">Empresa / Marca <span class="optional">(opcional)</span></label>
-              <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa ou marca" autocomplete="organization" />
-            </div>
-            <div class="form-actions">
-              <button type="button" class="btn-primary" id="btn-step1" data-i18n="ca.btn.continuar">Continuar →</button>
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="form-step" id="step-2">
-            <div class="field-group" id="fg-categoria">
-              <label for="categoria" data-i18n="ca.label.categoria">Categoria do produto</label>
-              <select id="categoria" name="categoria">
-                <option value="" disabled selected data-i18n="ca.opt.categoria.default">Selecione uma categoria</option>
-                <option value="suplementos" data-i18n="ca.opt.suplementos">Suplementos</option>
-                <option value="alimentacao" data-i18n="ca.opt.alimentacao">Alimentação</option>
-                <option value="higiene" data-i18n="ca.opt.higiene">Higiene</option>
-                <option value="acessorios" data-i18n="ca.opt.acessorios">Acessórios</option>
-                <option value="outro" data-i18n="ca.opt.outro">Outro</option>
-              </select>
-              <span class="field-error" data-i18n="ca.err.categoria">Por favor, selecione uma categoria.</span>
-            </div>
-            <div class="field-group" id="fg-descricao">
-              <label for="descricao" data-i18n="ca.label.descricao">Descreva o produto que você quer criar</label>
-              <textarea id="descricao" name="descricao" placeholder="Ex: um suplemento articular para cães de médio porte, com ômega 3..."></textarea>
-              <span class="field-error" data-i18n="ca.err.descricao">Por favor, descreva o produto que você quer criar.</span>
-            </div>
-            <div class="field-group" id="fg-volume">
-              <label for="volume" data-i18n="ca.label.volume">Volume inicial estimado</label>
-              <select id="volume" name="volume">
-                <option value="" disabled selected data-i18n="ca.opt.volume.default">Selecione um volume</option>
-                <option value="menos500" data-i18n="ca.opt.menos500">Menos de 500 unidades</option>
-                <option value="500-2000" data-i18n="ca.opt.500-2000">500 – 2.000 unidades</option>
-                <option value="mais2000" data-i18n="ca.opt.mais2000">Mais de 2.000 unidades</option>
-                <option value="naosei" data-i18n="ca.opt.naosei">Não sei ainda</option>
-              </select>
-              <span class="field-error" data-i18n="ca.err.volume">Por favor, selecione um volume estimado.</span>
-            </div>
-            <div class="field-group">
-              <label data-i18n="ca.label.embalagem">Tem embalagem ou identidade visual?</label>
-              <div class="radio-group" id="fg-embalagem">
-                <div class="radio-option">
-                  <input type="radio" id="emb-sim" name="embalagem" value="sim" />
-                  <label for="emb-sim" data-i18n="ca.opt.sim">Sim</label>
-                </div>
-                <div class="radio-option">
-                  <input type="radio" id="emb-nao" name="embalagem" value="nao" />
-                  <label for="emb-nao" data-i18n="ca.opt.nao">Não</label>
-                </div>
-                <div class="radio-option">
-                  <input type="radio" id="emb-dev" name="embalagem" value="em-desenvolvimento" />
-                  <label for="emb-dev" data-i18n="ca.opt.em-desenvolvimento">Em desenvolvimento</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button type="button" class="btn-ghost" id="btn-back1" data-i18n="ca.btn.voltar">← Voltar</button>
-              <button type="button" class="btn-primary" id="btn-step2" data-i18n="ca.btn.continuar">Continuar →</button>
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div class="form-step" id="step-3">
-            <div class="field-group" id="fg-origem">
-              <label for="origem" data-i18n="ca.label.origem">Como nos encontrou?</label>
-              <select id="origem" name="origem">
-                <option value="" disabled selected data-i18n="ca.opt.origem.default">Selecione uma opção</option>
-                <option value="linkedin">LinkedIn</option>
-                <option value="instagram">Instagram</option>
-                <option value="indicacao" data-i18n="ca.opt.indicacao">Indicação</option>
-                <option value="google">Google</option>
-                <option value="feira" data-i18n="ca.opt.feira">Feira</option>
-                <option value="outro" data-i18n="ca.opt.outro">Outro</option>
-              </select>
-              <span class="field-error" data-i18n="ca.err.origem">Por favor, selecione como nos encontrou.</span>
-            </div>
-            <div class="field-group">
-              <label for="comentario" data-i18n="ca.label.comentario">Alguma dúvida ou comentário? <span class="optional">(opcional)</span></label>
-              <textarea id="comentario" name="comentario" placeholder="Fique à vontade para contar mais sobre o seu projeto..." style="min-height:120px;"></textarea>
-            </div>
-            <div class="form-actions">
-              <button type="button" class="btn-ghost" id="btn-back2" data-i18n="ca.btn.voltar">← Voltar</button>
-              <button type="submit" class="btn-primary" id="btn-submit" data-i18n="ca.btn.submit">Enviar Projeto →</button>
-            </div>
-          </div>
-
-        </form>
+      <div class="choice-card">
+        <div class="choice-icon"><i class="ph-light ph-factory"></i></div>
+        <div class="choice-label">SOU UM FORNECEDOR</div>
+        <h2>Quero me registrar como fornecedor na rede PetLab</h2>
+        <p>Receba projetos estruturados com brief técnico completo,
+        clientes validados e contratos de longo prazo.
+        Sem custo de cadastro.</p>
+        <a href="https://wa.me/5541995259939?text=Ol%C3%A1%21%20Gostaria%20de%20me%20registrar%20na%20sua%20plataforma%20como%20fornecedor.%20Podemos%20conversar%3F"
+           target="_blank" class="btn-choice btn-supplier">
+          💬 Quero entrar na rede →
+        </a>
       </div>
+
     </div>
   </section>
-
-  <!-- Sticky CTA mobile (disappears when form is visible) -->
-  <div id="sticky-cta">
-    <a href="#form-section" class="btn-primary">Iniciar Meu Projeto →</a>
-  </div>
 
   <!-- Footer -->
   <footer>
@@ -529,92 +270,6 @@
     hamburger.addEventListener('click',()=>{const open=panel.classList.toggle('open');overlay.classList.toggle('open',open);hamburger.setAttribute('aria-expanded',open);});
     overlay.addEventListener('click',()=>{panel.classList.remove('open');overlay.classList.remove('open');hamburger.setAttribute('aria-expanded',false);});
 
-    /* Multi-step form */
-    let currentStep = 1;
-    const totalSteps = 3;
-    const progressFill = document.getElementById('progressFill');
-    const labels = [document.getElementById('label-1'), document.getElementById('label-2'), document.getElementById('label-3')];
-
-    function setStep(n) {
-      document.getElementById('step-'+currentStep).classList.remove('active');
-      currentStep = n;
-      document.getElementById('step-'+currentStep).classList.add('active');
-      progressFill.style.width = (currentStep / totalSteps * 100) + '%';
-      labels.forEach((l, i) => l.classList.toggle('active-label', i+1 === currentStep));
-      window.scrollTo({top: document.getElementById('form-section').offsetTop - 80, behavior: 'smooth'});
-    }
-
-    /* Validation helpers */
-    function setError(id, show) {
-      const fg = document.getElementById('fg-'+id);
-      if (fg) fg.classList.toggle('has-error', show);
-    }
-
-    function validateStep1() {
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const whatsapp = document.getElementById('whatsapp').value.trim();
-      const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      let valid = true;
-      setError('nome', !nome); if(!nome) valid=false;
-      setError('email', !emailRx.test(email)); if(!emailRx.test(email)) valid=false;
-      setError('whatsapp', whatsapp.length < 10); if(whatsapp.length<10) valid=false;
-      return valid;
-    }
-
-    function validateStep2() {
-      const cat = document.getElementById('categoria').value;
-      const desc = document.getElementById('descricao').value.trim();
-      const vol = document.getElementById('volume').value;
-      let valid = true;
-      setError('categoria', !cat); if(!cat) valid=false;
-      setError('descricao', desc.length < 10); if(desc.length<10) valid=false;
-      setError('volume', !vol); if(!vol) valid=false;
-      return valid;
-    }
-
-    function validateStep3() {
-      const origem = document.getElementById('origem').value;
-      let valid = true;
-      setError('origem', !origem); if(!origem) valid=false;
-      return valid;
-    }
-
-    document.getElementById('btn-step1').addEventListener('click', () => {
-      if (validateStep1()) setStep(2);
-    });
-
-    document.getElementById('btn-step2').addEventListener('click', () => {
-      if (validateStep2()) setStep(3);
-    });
-
-    document.getElementById('btn-back1').addEventListener('click', () => setStep(1));
-    document.getElementById('btn-back2').addEventListener('click', () => setStep(2));
-
-    document.getElementById('petlabForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (validateStep3()) {
-        window.location.href = 'obrigado.html';
-      }
-    });
-
-    /* Sticky CTA: hide when form card is visible */
-    const formCard = document.querySelector('.form-card');
-    const stickyCta = document.getElementById('sticky-cta');
-    const stickyObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { stickyCta.style.display = e.isIntersecting ? 'none' : 'block'; });
-    }, { threshold: 0.1 });
-    stickyObs.observe(formCard);
-
-    /* WhatsApp mask */
-    document.getElementById('whatsapp').addEventListener('input', function() {
-      let v = this.value.replace(/\D/g,'');
-      if(v.length>11) v=v.slice(0,11);
-      if(v.length>7) v=v.replace(/(\d{2})(\d{5})(\d+)/,'($1) $2-$3');
-      else if(v.length>2) v=v.replace(/(\d{2})(\d+)/,'($1) $2');
-      this.value = v;
-    });
-
     const translations = {
       pt: {
         'nav.home': 'Home',
@@ -622,50 +277,7 @@
         'nav.para-marcas': 'Para Marcas',
         'nav.fabricantes': 'Fabricantes',
         'nav.cta': 'Iniciar Projeto →',
-        'footer.copy': '© 2026 PetLab. Todos os direitos reservados.',
-        'ca.badge': 'Consulta Gratuita',
-        'ca.h2': 'Conta pra gente<br />o que você quer criar.',
-        'ca.subtitle': 'A consulta inicial é gratuita. Respondemos em até 24 horas.',
-        'ca.step1.label': 'Sobre você',
-        'ca.step2.label': 'Sobre o projeto',
-        'ca.step3.label': 'Última pergunta',
-        'ca.label.nome': 'Nome completo',
-        'ca.label.email': 'E-mail',
-        'ca.label.whatsapp': 'WhatsApp com DDD',
-        'ca.label.empresa': 'Empresa / Marca <span class="optional">(opcional)</span>',
-        'ca.label.categoria': 'Categoria do produto',
-        'ca.label.descricao': 'Descreva o produto que você quer criar',
-        'ca.label.volume': 'Volume inicial estimado',
-        'ca.label.embalagem': 'Tem embalagem ou identidade visual?',
-        'ca.label.origem': 'Como nos encontrou?',
-        'ca.label.comentario': 'Alguma dúvida ou comentário? <span class="optional">(opcional)</span>',
-        'ca.opt.categoria.default': 'Selecione uma categoria',
-        'ca.opt.suplementos': 'Suplementos',
-        'ca.opt.alimentacao': 'Alimentação',
-        'ca.opt.higiene': 'Higiene',
-        'ca.opt.acessorios': 'Acessórios',
-        'ca.opt.outro': 'Outro',
-        'ca.opt.volume.default': 'Selecione um volume',
-        'ca.opt.menos500': 'Menos de 500 unidades',
-        'ca.opt.500-2000': '500 – 2.000 unidades',
-        'ca.opt.mais2000': 'Mais de 2.000 unidades',
-        'ca.opt.naosei': 'Não sei ainda',
-        'ca.opt.sim': 'Sim',
-        'ca.opt.nao': 'Não',
-        'ca.opt.em-desenvolvimento': 'Em desenvolvimento',
-        'ca.opt.origem.default': 'Selecione uma opção',
-        'ca.opt.indicacao': 'Indicação',
-        'ca.opt.feira': 'Feira',
-        'ca.err.nome': 'Por favor, informe seu nome completo.',
-        'ca.err.email': 'Por favor, informe um e-mail válido.',
-        'ca.err.whatsapp': 'Por favor, informe seu WhatsApp com DDD.',
-        'ca.err.categoria': 'Por favor, selecione uma categoria.',
-        'ca.err.descricao': 'Por favor, descreva o produto que você quer criar.',
-        'ca.err.volume': 'Por favor, selecione um volume estimado.',
-        'ca.err.origem': 'Por favor, selecione como nos encontrou.',
-        'ca.btn.continuar': 'Continuar →',
-        'ca.btn.voltar': '← Voltar',
-        'ca.btn.submit': 'Enviar Projeto →'
+        'footer.copy': '© 2026 PetLab. Todos os direitos reservados.'
       },
       es: {
         'nav.home': 'Inicio',
@@ -673,50 +285,7 @@
         'nav.para-marcas': 'Para Marcas',
         'nav.fabricantes': 'Fabricantes',
         'nav.cta': 'Iniciar Proyecto →',
-        'footer.copy': '© 2026 PetLab. Todos los derechos reservados.',
-        'ca.badge': 'Consulta Gratuita',
-        'ca.h2': 'Cuéntanos<br />qué quieres crear.',
-        'ca.subtitle': 'La consulta inicial es gratuita. Respondemos en hasta 24 horas.',
-        'ca.step1.label': 'Sobre ti',
-        'ca.step2.label': 'Sobre el proyecto',
-        'ca.step3.label': 'Última pregunta',
-        'ca.label.nome': 'Nombre completo',
-        'ca.label.email': 'E-mail',
-        'ca.label.whatsapp': 'WhatsApp con código de área',
-        'ca.label.empresa': 'Empresa / Marca <span class="optional">(opcional)</span>',
-        'ca.label.categoria': 'Categoría del producto',
-        'ca.label.descricao': 'Describe el producto que quieres crear',
-        'ca.label.volume': 'Volumen inicial estimado',
-        'ca.label.embalagem': '¿Tienes embalaje o identidad visual?',
-        'ca.label.origem': '¿Cómo nos encontraste?',
-        'ca.label.comentario': '¿Alguna duda o comentario? <span class="optional">(opcional)</span>',
-        'ca.opt.categoria.default': 'Selecciona una categoría',
-        'ca.opt.suplementos': 'Suplementos',
-        'ca.opt.alimentacao': 'Alimentación',
-        'ca.opt.higiene': 'Higiene',
-        'ca.opt.acessorios': 'Accesorios',
-        'ca.opt.outro': 'Otro',
-        'ca.opt.volume.default': 'Selecciona un volumen',
-        'ca.opt.menos500': 'Menos de 500 unidades',
-        'ca.opt.500-2000': '500 – 2.000 unidades',
-        'ca.opt.mais2000': 'Más de 2.000 unidades',
-        'ca.opt.naosei': 'No lo sé aún',
-        'ca.opt.sim': 'Sí',
-        'ca.opt.nao': 'No',
-        'ca.opt.em-desenvolvimento': 'En desarrollo',
-        'ca.opt.origem.default': 'Selecciona una opción',
-        'ca.opt.indicacao': 'Referido',
-        'ca.opt.feira': 'Feria',
-        'ca.err.nome': 'Por favor, ingresa tu nombre completo.',
-        'ca.err.email': 'Por favor, ingresa un e-mail válido.',
-        'ca.err.whatsapp': 'Por favor, ingresa tu WhatsApp con código de área.',
-        'ca.err.categoria': 'Por favor, selecciona una categoría.',
-        'ca.err.descricao': 'Por favor, describe el producto que quieres crear.',
-        'ca.err.volume': 'Por favor, selecciona un volumen estimado.',
-        'ca.err.origem': 'Por favor, selecciona cómo nos encontraste.',
-        'ca.btn.continuar': 'Continuar →',
-        'ca.btn.voltar': '← Volver',
-        'ca.btn.submit': 'Enviar Proyecto →'
+        'footer.copy': '© 2026 PetLab. Todos los derechos reservados.'
       },
       en: {
         'nav.home': 'Home',
@@ -724,50 +293,7 @@
         'nav.para-marcas': 'For Brands',
         'nav.fabricantes': 'Manufacturers',
         'nav.cta': 'Start Project →',
-        'footer.copy': '© 2026 PetLab. All rights reserved.',
-        'ca.badge': 'Free Consultation',
-        'ca.h2': 'Tell us<br />what you want to create.',
-        'ca.subtitle': 'The initial consultation is free. We respond within 24 hours.',
-        'ca.step1.label': 'About you',
-        'ca.step2.label': 'About the project',
-        'ca.step3.label': 'Last question',
-        'ca.label.nome': 'Full name',
-        'ca.label.email': 'E-mail',
-        'ca.label.whatsapp': 'WhatsApp with area code',
-        'ca.label.empresa': 'Company / Brand <span class="optional">(optional)</span>',
-        'ca.label.categoria': 'Product category',
-        'ca.label.descricao': 'Describe the product you want to create',
-        'ca.label.volume': 'Estimated initial volume',
-        'ca.label.embalagem': 'Do you have packaging or visual identity?',
-        'ca.label.origem': 'How did you find us?',
-        'ca.label.comentario': 'Any question or comment? <span class="optional">(optional)</span>',
-        'ca.opt.categoria.default': 'Select a category',
-        'ca.opt.suplementos': 'Supplements',
-        'ca.opt.alimentacao': 'Food',
-        'ca.opt.higiene': 'Hygiene',
-        'ca.opt.acessorios': 'Accessories',
-        'ca.opt.outro': 'Other',
-        'ca.opt.volume.default': 'Select a volume',
-        'ca.opt.menos500': 'Less than 500 units',
-        'ca.opt.500-2000': '500 – 2,000 units',
-        'ca.opt.mais2000': 'More than 2,000 units',
-        'ca.opt.naosei': 'I don\'t know yet',
-        'ca.opt.sim': 'Yes',
-        'ca.opt.nao': 'No',
-        'ca.opt.em-desenvolvimento': 'In development',
-        'ca.opt.origem.default': 'Select an option',
-        'ca.opt.indicacao': 'Referral',
-        'ca.opt.feira': 'Trade show',
-        'ca.err.nome': 'Please provide your full name.',
-        'ca.err.email': 'Please provide a valid e-mail.',
-        'ca.err.whatsapp': 'Please provide your WhatsApp with area code.',
-        'ca.err.categoria': 'Please select a category.',
-        'ca.err.descricao': 'Please describe the product you want to create.',
-        'ca.err.volume': 'Please select an estimated volume.',
-        'ca.err.origem': 'Please select how you found us.',
-        'ca.btn.continuar': 'Continue →',
-        'ca.btn.voltar': '← Back',
-        'ca.btn.submit': 'Send Project →'
+        'footer.copy': '© 2026 PetLab. All rights reserved.'
       }
     };
 
