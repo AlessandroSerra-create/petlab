@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+**/.DS_Store
+
+# Editor / agent
+.claude/
+
+# Placeholder (cartella tecnica, non deployare)
+NUOVO/
+
+# Sito vecchio — tenuto solo in locale, non va online
+VECCHIO/
+
+# Asset sorgente non usati a runtime (tenuti in locale)
+frames/
+frames-upscaled-2k-bak/
+hero-petlab-scroll.mp4
